@@ -1,0 +1,39 @@
+<%- include('./includes/start.ejs') %>
+<link rel="stylesheet" href="/css/categories.css">
+</head>
+<body>
+    <%- include('./includes/topNav') %>
+
+    <main class="mainContainer">
+        <section class="sideNav">
+            side navigation
+        </section>
+
+        <section class="productGallery">
+            <!-- Filters and other orderby conditions -->
+            <section class="filters">
+                filters
+            </section>
+
+            <!-- Product Listing -->
+            <section class="productListing">
+                <% if(locals.productList) {%>
+                    <% for(let p = 0; p < productList.length; p++) {%>
+                        <%- include('./includes/elements/product', { p: productList[p] }) %>
+                    <%}%>
+                <%} else {%>
+                    <h2>No Products found</h2>
+                <%}%>
+            </section>
+
+            <!-- Pagination Links -->
+            <section class="paginationBtnContainer">
+                <a href="" class="paginationBtn">1</a>
+                <a href="" class="paginationBtn">2</a>
+            </section>
+        </section>
+    </main>
+
+    <%- include('./includes/footer') %>
+</body>
+</html>

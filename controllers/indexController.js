@@ -2,6 +2,19 @@ const topCategory = require('../util/menu');
 const footerMenu = require('../util/footer');
 const resources = require('../util/resourceLocator');
 
+const products = [
+    {
+        brand: 'Duke',
+        name: 'Kunvar KurtaKunvar KurtaKunvar KurtaKunvar KurtaKunvar KurtaKunvar Kurta',
+        imageUrl: 'kurta.jpg',
+        type: 'shirts',
+        category: 'Ethnic',
+        gender: 'boys',
+        price: 20,
+        sizes: ['s', 'm', 'l', 'xl']
+    }, {}, {}, {}, {}, {}, {}
+]
+
 exports.getHome = (req, res, next) => {
     console.log('Homepage');
     res.render('index', { 
@@ -15,10 +28,11 @@ exports.getHome = (req, res, next) => {
 
 exports.getProducts = (req, res, next) => {
     console.log('Product page to be rendered');
-    res.render('products', {
+    res.render('categories', {
         title: 'LosNanos Products',
         topMenu: topCategory,
-        footerMenu: footerMenu
+        footerMenu: footerMenu,
+        productList: products
     });
 };
 
