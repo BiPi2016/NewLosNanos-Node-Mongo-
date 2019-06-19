@@ -16,8 +16,10 @@
                                 <li class="topNav__subCatList__item">
                                     <p class="subMenuOptionContainer">
                                         <a href="<%=s.endPoint%>" class="subCat__link"><%= s.name %></a>
-                                        <label for="<%=indexTop%><%=indexSub%>" class="subMenuLabel"><span class="plusContainer">+</span></label>
-                                    </p>   
+                                        <% if(s.subCats) {%>
+                                            <label for="<%=indexTop%><%=indexSub%>" class="subMenuLabel"><span class="plusContainer">+</span></label>
+                                        <%}%>
+                                        </p>   
                                     <div class="divider"></div>                                
                                     <% if(s.subCats) {%>
                                         <input type="checkbox" class="checkSubCat" id="<%=indexTop%><%=indexSub%>"> 
