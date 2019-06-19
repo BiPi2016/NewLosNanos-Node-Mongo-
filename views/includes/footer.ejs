@@ -1,0 +1,46 @@
+<footer>
+    <section class="mobileOnlySocialIcons">
+        <a href="" class="socialIcon"><i class="fab fa-instagram"></i></a>
+        <a href="" class="socialIcon"><i class="fab fa-facebook-square"></i></a>
+        <a href="" class="socialIcon"><i class="fab fa-pinterest-square"></i></a>
+        <a href="" class="socialIcon"><i class="fab fa-twitter-square"></i></i></a>
+    </section>
+    <section class="whyUs">
+        <p class="whyUsPara">Free delivery and returns</p>
+        <p class="whyUsPara">Secure payments</p>
+        <p class="whyUsPara">Delivery within 1-3 days</p>
+    </section>
+    <section class="promotion">
+        <p class="promotionPara">Follow us on instagram to</p>
+        <a href="" class="promotionPara promotionHowMuch"><p>Get discount of 15%</p></a> 
+    </section>
+
+    <!-- Footer Links -->
+
+    <%if(locals.footerMenu) {%>
+        <ul class="topListFooter footerList">
+            <% footerMenu.forEach( (fm, topIndex) => {%>
+                <li class="topListFooter__item">
+                    <label for="chkTop<%=topIndex%>" class="topListFooterLabel"><%= fm.name %></label>
+                    <input type="checkbox" name="" id="chkTop<%=topIndex%>" class="chkFooterTop">
+                    <ul class="subListFooter footerList">
+                        <% fm.menu.forEach( (subMenu, subIndex) => {%>
+                            <a href="<%=subMenu.endPoint%>" class="subListFooter_item">
+                                <%if(subMenu.image) {%>
+                                    <span class="socialIconSubMenu"><%-subMenu.image%></span>
+                                <%}%>
+                                <%if(subMenu.imgUrl) {%>
+                                   <img src="./images/logos/<%=subMenu.imgUrl%>" alt="<%=subMenu.name%>" class="paymentPartnerLogo">
+                                <%} else {%>
+                                    <%=subMenu.name%>
+                                <%}%>
+                            </a>
+                        <%})%>
+                    </ul>
+                </li>
+            <%})%>
+        </ul>
+    <%}%>
+    
+
+</footer>

@@ -1,0 +1,13 @@
+<%if(locals.featuredProducts) {%>
+    <section class="featuredContainer">
+        <%featuredProducts.forEach( p => {%>
+            <a href="/products<%=p.endPoint%>" class="featuredLink">
+                <article class="productSection">
+                    <img src="images/landing-page-images/<%=p.sectionImage%>" alt="<%=p.sectionName%>" class="featuredProdImage">
+                    <p class="featuredProdName"><%=p.sectionName%></p>
+                </article>
+            </a>
+        <%})%>
+    </section>
+<%}%>
+    

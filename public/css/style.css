@@ -1,0 +1,159 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --my-blue: rgba(94, 99, 123, 1);
+  --medium-gray: #707070;
+  --light-gray: rgba(218, 219, 209, 1);
+  --light-purple:rgba(140, 71, 124, .32);
+  --medium-purple: rgba(112, 94, 186, 0.5);
+  --creamy-purple: rgb(200, 138, 143);
+  --creamy-purple-dark: rgb(186, 94, 117);
+  --pinkish-gray: rgb(246, 234, 237);
+  --pearl-white: rgb(253, 244, 247);
+  --brick-red: #F17171;
+
+}
+body {
+  padding: 0 10px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.pageTitle {
+  background-color: var(--brick-red);
+  color: var(--pearl-white);
+  text-align: center;
+}
+
+.main {
+  padding: 10px;
+}
+
+/*Carousell*/
+.carousell {
+  background-color: var(--light-gray);
+  position: relative;
+  overflow: hidden;
+}
+.chkPlayPauseAnim {
+  display: none;
+}
+.chkPlayPauseAnim:checked ~ .slideContainer {
+  animation-play-state: paused;
+}
+.playPauseLabel {
+  z-index: 999;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.playBtn,
+.pauseBtn {
+  color: var(--creamy-purple);
+  font-size: 2em;
+  text-shadow: 0px 0px 5px var(--pearl-white);
+}
+
+
+.playBtn:hover,
+.pauseBtn:hover {
+  cursor: pointer;
+  color: var(--brick-red);
+  text-shadow: 0px 0px 10px purple;
+}
+.playBtn {
+  display: none;
+}
+.chkPlayPauseAnim:checked ~ .playPauseLabel .playBtn { /*Shows play button*/
+  display: block;
+}
+.chkPlayPauseAnim:checked ~ .playPauseLabel .pauseBtn { /*Hides pause button*/
+  display: none;
+}
+
+.slideContainer {  
+  height: 60vh;
+  display: grid;
+  grid-template-columns: repeat(3, 100%);
+  position: relative;
+  animation-name: slideImg;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;  
+}
+
+@keyframes slideImg {
+  0% {left: 0%;}
+  31% {left: 0%;}
+  33% {left: -100%;}
+  64% {left: -100%;}
+  66% {left: -200%;}
+  98% {left: -200%;}
+  100% { left: -300%}
+}
+
+.imageContainer { 
+  height: 100%;
+}
+.carousellImg {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+/*Featured Products*/
+.featuredContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  margin: 10px auto;
+}
+.productSection {
+  height: 40vw;
+  position: relative;
+}
+.featuredProdImage {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+.featuredProdName {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 1em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  color: var(--pearl-white);
+  background-color: var(--my-blue);
+  opacity: 0.8;
+}
+@media only screen  and (min-width: 800px) {
+  .carousell {
+  }
+  .slideContainer {
+    height: 80vh;
+  }
+  .imageContainer { 
+    width: 80vw;
+    margin: auto;  
+  }
+  .carousellImg {
+
+  }
+}
+

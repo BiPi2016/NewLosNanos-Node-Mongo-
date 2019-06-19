@@ -1,0 +1,16 @@
+<section class="carousell">
+    <input type="checkbox" name="" id="chkPlayPauseAnim" class="chkPlayPauseAnim">
+    <label for="chkPlayPauseAnim" class="playPauseLabel">
+        <p class="playBtn"><i class="fas fa-play"></i></p>
+        <p class="pauseBtn"><i class="fas fa-pause"></i></p>
+    </label>
+    <section class="slideContainer">
+        <%carousellImgs.forEach( (img, index) => {%>   
+            <div class="imageContainer" id="imgContainer<%=index%>">                 
+                <img src="images/landing-page-images/<%=img%>" alt="seasons collection" class="carousellImg" />
+            </div>
+        <%})%>
+    </section>
+</section>
+
+

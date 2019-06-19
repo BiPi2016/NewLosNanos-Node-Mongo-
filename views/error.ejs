@@ -1,0 +1,12 @@
+<%- include('./includes/start.ejs') %>
+</head>
+<body>
+    <%- include('./includes/topNav')%>
+    
+    <h1><%= error.msg %></h1>
+    <h2><%= error.status %></h2>
+    <pre><%= error.stack %></pre>
+    
+    <%- include('./includes/footer.ejs') %>
+</body>
+</html>

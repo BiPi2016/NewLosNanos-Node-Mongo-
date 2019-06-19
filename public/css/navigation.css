@@ -1,0 +1,383 @@
+* {
+    border: 0;
+    margin: 0;
+}
+header {
+    z-index: 99999;
+    background-color: var(--pinkish-gray);
+    position: relative;
+}
+
+/* Top Bar */
+.topBar {  
+    padding: 10px 20px 10px 10px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: flex-end;
+    position: relative;
+}
+.logoContainer {   
+    justify-self: end;
+}
+.siteLogo {
+    display: block;   
+    width: 70%;
+    margin-left: auto;
+}
+.leftSide {
+    justify-self: end;
+    box-sizing: border-box;
+    display: flex;
+    margin-left: auto;
+    justify-content: flex-end; /* 
+    position: relative; */
+}
+
+
+.topBarComponent{
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 50px;
+}
+
+/*SearchBox*/
+.searchBoxTriggerLabel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+.searchBoxTrigger {
+    color: var(--creamy-purple);
+}
+#chkSearchBoxTrigger {
+    display: none;
+}
+#chkSearchBoxTrigger:checked ~ .searchBoxContainer {
+    display: flex;
+}
+.searchBoxContainer {
+    box-sizing: border-box;
+    position: absolute;
+    top: 100%;
+    left: 0%; 
+    width: 100%;
+    margin: auto; /* Somehow stretches the searchboxContainer from left to right, could not mangage 10px around it*/
+    border: 2px solid var(--creamy-purple);
+    border-radius: 5px;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--creamy-purple);
+    font-size: 1.2em;
+}
+.searchBoxInput {
+    padding: 10px;
+    width: 85%;
+    border-radius: 5px;
+    margin: 2px 10px 2px 5px;
+    background: transparent;
+    border: none;
+    font-size: 1.1em;
+}
+.searchBoxText {
+    padding: 5px;
+}
+.searchBoxInput:focus,
+.searchBoxInput:hover {
+    background-color: var(--creamy-purple);
+    color: var(--pearl-white);
+    outline: none;
+}
+
+/* Authentication */
+.userLogo {
+}
+.authentication-msg {
+    margin-left: 5px;
+    margin-bottom: 3px;
+}
+
+/* Shopping Cart*/
+.cartContainer {
+    position: relative;
+}
+.topBarImage,
+.searchBoxTrigger {
+    font-size: 2em;
+    display: block;
+    align-self: flex-end;
+    color: var(--creamy-purple);
+}
+.howManyProducts {
+    position: absolute;
+    top: 0px;
+    right: -15px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: var(--brick-red);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    vertical-align: middle;
+}
+
+/* Mobile Menu Toggle */
+#mobileMenuCheckbox {
+    display: none;
+}
+#mobileMenuToggleLabel {
+    border: 10px solid transparent ;  /* Makes area surrounding the label clickable*/
+    position: absolute;
+    top: 40px;
+    left: 5px;
+}
+#mobileMenuToggleLabel:hover {
+    cursor: pointer;
+}
+#mobileMenuCheckbox:checked ~ label .mobileMenu {
+    background-color: transparent;
+}
+#mobileMenuCheckbox:checked ~ label .mobileMenu::after {
+    transform: rotate(-45deg);
+}
+#mobileMenuCheckbox:checked ~ label .mobileMenu::before {
+    transform: rotate(45deg);
+}
+#mobileMenuCheckbox:checked ~ nav .topNavList {
+    transform: scaleX(1.0);
+}
+.mobileMenu,
+.mobileMenu::after,
+.mobileMenu::before {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: var(--my-blue);
+    position: relative;
+    transition: background 500ms ease-in-out;
+}
+.mobileMenu::after {
+    position: absolute;
+    transform: translateY(10px);
+    transition: transform 500ms ease-in-out;
+}
+.mobileMenu::before {
+    position: absolute;
+    transform: translateY(-10px);
+    transition: transform 500ms ease-in-out;
+}
+
+nav ul {
+    list-style: none;
+}
+.separator {
+    height: 50px;
+    background-color: transparent;
+}
+/* Top Navigaion Menu */
+.topNavList {
+    position: relative;
+    transform: scaleX(0.0);
+    transform-origin: left;
+    transition: transform 250ms ease-in-out 0ms;
+}
+.topNavList__item {
+    padding: 10px;
+    font-size: 120%;
+    border-bottom: 2px solid transparent;
+}
+/* .topNavList__item:hover .topNav__subCatList {   Shows the sub menu when parent hover upon
+    display: block;   
+} */
+.topMenuOptionContainer {  /* On mobile view, lets open submenus when clicked on plus sign */
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+.topNavList__item:hover .topNav__link {
+    /* color: var(--light-gray); */
+    text-decoration: line-through;
+}
+.topNav__link,
+.mobileMenuTopNavItem {
+    color: var(--medium-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+.checkTopCat { /* Checkboxes to triger sub-categories */
+    display: none;
+}
+.checkTopCat:checked ~ ul {  /* .topNav__subCatList is hidden or shown*/
+    display: block;
+}
+.plusContainer {
+    padding: 5px;
+    color: var(--medium-gray);
+    font-weight: bold;
+}
+.plusContainer:hover {
+    cursor: pointer;
+}
+
+.topNav__subCatList{
+    display: none;
+    position: relative;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    padding: 10px;
+}
+
+/* Sub-Menu */
+.topNav__subCatList__item {
+    padding-right: 20px;
+    min-width: 20%;
+}
+.subMenuOptionContainer {
+    display: flex;
+    justify-content: space-between;
+}
+.subCat__link {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--medium-gray);
+    padding: 5px;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+}
+.checkSubCat {
+    display: none;
+}
+.checkSubCat:checked ~ ul {  /* Display innermost ul */
+    display: block;
+}
+.divider {
+    margin-top: 5px;
+    height: 3px;
+    background-color: var(--light-gray);
+}
+
+/* Innermost ul */
+.innermost__list {
+    margin-top: 10px;
+    display: none;
+}
+.innermost__list__item {
+    padding: 5px;
+}
+.subCat__link:hover {
+    border-bottom: 2px solid var(--creamy-purple);
+}
+
+.innermost__link {
+    color: var(--medium-gray);
+    text-decoration: none;
+    padding: 10px;
+    font-size: 95%;
+    text-transform: capitalize;
+}
+.innermost__link:hover {
+    background-color: var(--creamy-purple);
+    color: var(--pearl-white);
+}
+
+@media only screen and (min-width: 800px) {
+    .topBar {    
+        padding: 10px 20px 10px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    .logoContainer {
+        display: flex;
+        justify-content: flex-start;
+    }
+    .siteLogo {
+        height: 100%;
+        margin-left: 0;
+    }
+    .leftSide {
+        justify-self: end;
+    }
+    .topBarComponent {
+        margin: 10px 20px;
+    }
+    .topBarImage {
+        font-size: 2.5em;
+    }
+    .searchBoxTrigger,
+    .searchBoxTriggerLabel {
+        display: none; 
+    }
+    .searchBoxContainer {
+        top: 0;
+        position: static;
+        display: flex;
+        font-size: 1em;
+    }
+    .userAuthentication {
+        display: flex;
+        width: 50%;
+    }
+
+    #mobileMenuToggleLabel {
+        display: none;
+    }
+    .separator {
+        display: none;
+    }
+    .topNavList {
+        display: flex;
+        transform: scaleX(1.0);
+        background: linear-gradient(var(--medium-purple), var(--light-purple), var(--medium-purple));
+    }
+    .topNavList__item {
+        padding: 10px 30px;
+        font-size: 120%;
+        border-bottom: 2px solid transparent;
+    }
+    .topCatLabel {  /* Hides topCat labels on largerscreen*/
+        display: none;
+    }
+    .mobileMenuTopNavItem {  /* Hides mobile navigation helper */
+        /* display: none; */  /* has been deleted */
+    }
+    .topNavList__item:hover,
+    .topNavList__item-active {
+        border-bottom-color: var(--light-gray);
+        background-color: var(--my-blue);
+    }
+    .topNavList__item:hover .topNav__subCatList {
+        display: flex;
+    }
+    .topNavList__item:hover .topNav__link {
+        color: var(--light-gray);
+    }
+    .topNav__subCatList{
+        border: 1px solid var(--medium-gray);
+        background-color: #fff;        
+        display: none;
+        position: absolute;
+        width: 100%;
+        top: 100%;
+        left: 0;
+        padding: 20px 10px 10px 10px;
+    }
+    .subMenuLabel {
+        display: none;
+    }
+    .divider {
+        display: none;
+    }
+
+    /* Innermost ul */
+    .innermost__list {
+        display: block;
+    }    
+}
