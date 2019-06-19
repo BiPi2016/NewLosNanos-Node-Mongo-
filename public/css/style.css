@@ -144,7 +144,8 @@ a {
 }
 
 /*Product box*/
-.productInfo {
+.productInfo,
+.productLink {
   position: relative;
   overflow: hidden;
 }

@@ -1,5 +1,5 @@
 .mainContainer {
-    border: 1px solid red;
+    margin: 10px 0;
 }
 
 .sideNav {
@@ -65,7 +65,7 @@
     }
     .sideNav {
         display: block;
-        border: 2px solid blue;
+        background-color: var(--pinkish-gray);
     }
 
     /*Product Gallery*/

@@ -8,12 +8,6 @@ header {
     position: relative;
 }
 
-.centerFlex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 /* Top Bar */
 .topBar {  
     padding: 10px 20px 10px 10px;
@@ -192,31 +186,11 @@ nav ul {
     transform-origin: left;
     transition: transform 250ms ease-in-out 0ms;
 }
-.sideNavList {
-    background-color: var(--pinkish-gray);
-}
-.topNavList__item,
-.sideNavList__item {
+.topNavList__item {
     padding: 10px;
     font-size: 120%;
     border-bottom: 2px solid transparent;
 }
-.sideNavList__item {
-    text-transform: capitalize;
-}
-.sideNavPlusContainer {
-    margin-bottom: 10px;
-    border-bottom: 2px solid transparent;
-    padding: 5px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: var(--medium-gray);
-}
-.sideNavPlusContainer:hover {
-    cursor: pointer;
-    border-color: var(--creamy-purple);
-}
-
 /* .topNavList__item:hover .topNav__subCatList {   Shows the sub menu when parent hover upon
     display: block;   
 } */
@@ -236,14 +210,10 @@ nav ul {
     letter-spacing: 1px;
     text-decoration: none;
 }
-.checkTopCat,
-.checkSideNavTopCat { /* Checkboxes to triger sub-categories */
+.checkTopCat { /* Checkboxes to triger sub-categories */
     display: none;
 }
-.checkTopCat:checked ~ .topNav__subCatList {  /* .topNav__subCatList is hidden or shown*/
-    display: block;
-}
-.checkSideNavTopCat:checked ~ .sideNav__subCatList {
+.checkTopCat:checked ~ ul {  /* .topNav__subCatList is hidden or shown*/
     display: block;
 }
 .plusContainer {
@@ -255,8 +225,7 @@ nav ul {
     cursor: pointer;
 }
 
-.topNav__subCatList,
-.sideNav__subCatList{
+.topNav__subCatList{
     display: none;
     position: relative;
     width: 100%;
@@ -270,14 +239,6 @@ nav ul {
     padding-right: 20px;
     min-width: 20%;
 }
-.sideNav__subCatList__item {
-}
-.sideNavPlusContainerSubMenu {
-    color: var(--creamy-purple-dark);
-    font-size: 1em;
-    font-weight: normal;
-    padding: 2px;
-}
 .subMenuOptionContainer {
     display: flex;
     justify-content: space-between;
@@ -290,14 +251,10 @@ nav ul {
     font-weight: bold;
     border-bottom: 2px solid transparent;
 }
-.checkSubCat,
-.chkSideNavSubCat {
+.checkSubCat {
     display: none;
 }
-.checkSubCat:checked ~ .innermost__list {  /* Display innermost ul */
-    display: block;
-}
-.chkSideNavSubCat:checked ~ .sideNavInnerMost__list{
+.checkSubCat:checked ~ ul {  /* Display innermost ul */
     display: block;
 }
 .divider {
@@ -307,17 +264,12 @@ nav ul {
 }
 
 /* Innermost ul */
-.innermost__list,
-.sideNavInnerMost__list {
+.innermost__list {
     margin-top: 10px;
     display: none;
 }
-.innermost__list__item{
+.innermost__list__item {
     padding: 5px;
-}
-
-.sideNavInnerMost__list__item {
-    padding: 10px;
 }
 .subCat__link:hover {
     border-bottom: 2px solid var(--creamy-purple);
