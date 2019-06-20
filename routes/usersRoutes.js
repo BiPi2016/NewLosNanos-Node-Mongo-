@@ -7,7 +7,7 @@ const userController = require('../controllers/userController');
 router.get('/', userController.getUserProfile);
 
 /* Get Log in Page */
-router.get('/login', userController.getLogin);
+router.get('/login', userController.getLogIn);
 
 router.get('/cart', userController.getCart);
 

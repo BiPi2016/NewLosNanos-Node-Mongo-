@@ -1,0 +1,75 @@
+.title {
+    text-transform: capitalize;
+    text-align: center;
+    color: var(--my-blue);
+    margin: 20px auto;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+}
+.userLoginForm {
+    padding: 10px;
+    border: 2px solid var(--creamy-purple);
+    border-radius: 5px;
+    background-color: var(--pearl-white);
+    width: 95vw;
+    margin: 20px auto;
+    box-shadow: 0px 0px 10px var(--light-purple);
+}
+
+.fieldContainer {
+    margin-bottom: 10px;
+}
+
+.formLabel {
+    color: var(--creamy-purple-dark);
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: block;
+}
+.formInput {
+    padding: 10px;
+    border: 1px solid var(--creamy-purple-dark);
+    border-radius: 5px;
+    width: 100%;
+    color: var(--creamy-purple);
+}
+.formInput:focus {
+    background-color: var(--creamy-purple);
+    color: var(--pearl-white);
+    outline: pink;
+}
+
+.formBtn {
+    width: 60%;
+    display: block;  /* Needs to be block-element for margin: auto to center the element */
+    margin: 20px auto 10px;
+    color: var(--pearl-white);
+    border-width: 2px;
+    background: var(--creamy-purple-dark);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.formBtn:hover {
+    border-width: 2px;
+    color: var(--creamy-purple-dark);
+    background: var(--pearl-white);
+    outline-color: pink;
+    
+}
+
+/* Login with social networks or other services */
+.otherLoginOps  {
+
+}
+.loginOpsText {
+    text-align: center;
+    color: var(--creamy-purple);
+}
+
+@media only screen and (min-width: 880px) {
+    .userLoginForm {
+        width: 40vw;
+
+    }
+}
