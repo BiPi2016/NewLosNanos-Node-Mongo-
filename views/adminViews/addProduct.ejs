@@ -1,0 +1,37 @@
+<%- include('../includes/start') %>
+<link rel="stylesheet" href="/css/admin.css">
+<link rel="stylesheet" href="/css/forms.css">
+</head>
+<body>
+
+    <%- include('./adminMenu') %>
+
+    <form action="" method="post" class="newProductForm">
+        <section class="fieldContainer">
+            <label for="brand" class="formLabel">Brand</label>
+            <input type="text" name="brand" id="brand" class="formInput">
+        </section>
+        <section class="fieldContainer">
+            <label for="name" class="formLabel">Name</label>
+            <input type="text" name="name" id="name" class="formInput">
+        </section>
+        <section class="fieldContainer">
+            <label for="price" class="formLabel">Price</label>
+            <input type="number" name="price" id="price" class="formInput">
+        </section>
+        <section class="fieldContainer centerFlexEven" id="prodClassification">
+            <%- include('./adminElements/selectGender') %>
+            <%- include('./adminElements/selectCategory') %>
+            <%- include('./adminElements/selectType') %>
+        </section>
+        
+        <div class="centerFlex">
+                <button type="submit" class="formBtn formInput">Submit</button>
+                <button type="reset" class="formBtn formInput">Reset</button>
+        </div>
+        
+    </form>
+
+    <script src="/javascripts/addProduct.js"></script>
+</body>
+</html>

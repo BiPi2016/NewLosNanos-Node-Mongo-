@@ -1,3 +1,23 @@
+.adminMenuList {
+    list-style: none;
+    display: flex;
+    padding: 10px;
+    margin: 10px auto;
+    background-color: var(--pearl-white);
+    color: var(--my-blue);
+}
+
+.adminMenuList__link {
+    padding: 10px;
+    color: var(--my-blue);
+    text-transform: capitalize;
+    box-sizing: border-box;
+}
+.adminMenuList__link:hover {
+    background-color: var(--my-blue);
+    color: var(--light-gray);
+}
+
 .title,
 .activityHeader {
     color: var(--my-blue);
@@ -19,8 +39,9 @@
 }
 .activityList__link {
     text-decoration: none;
+    text-transform: uppercase;  
     color: var(--creamy-purple-dark);
-    font-size: 1.5em;
+    font-size: 1.2em;
     padding: 10px;
     margin: 30px;
     border: 2px solid pink;
@@ -29,7 +50,7 @@
 .activityList__link:hover {
     background-color: var(--creamy-purple-dark);
     color: var(--pearl-white);
-    box-shadow: 0px 0px 20px var(--light-purple);
+    box-shadow: 0px 0px 10px var(--creamy-purple);
 }
 
 

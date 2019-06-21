@@ -15,8 +15,14 @@ router.get('/', adminController.getAdminPage);
 // Get Manage Products
 router.get('/manageProducts', adminController.getManageProducts);
 
+// Get Manage Users
+router.get('/manageUsers', adminController.getManageUsers);
+
 // Get Add Product
 router.get('/addProduct', adminController.getAddProduct);
+
+// Post Add Product
+router.post('/addProduct', adminController.postAddProduct);
 
 // Post Add Product
 router.post('/addProduct', adminController.postAddProduct);
