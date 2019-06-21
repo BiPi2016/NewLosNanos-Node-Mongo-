@@ -25,9 +25,9 @@ a {
   color: #00B7FF;
 }
 
-.centerFlexEven {
+.centerFlexSpaceBetween {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 }
 
