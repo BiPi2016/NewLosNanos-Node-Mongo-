@@ -1,0 +1,17 @@
+<%- include('../includes/start') %>
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <%- include('../includes/topNav') %>
+    <h1 class="title"><%=title%></h1>
+    <main>
+        <h2 class="activityHeader">What do you wish to do?</h2>
+        <ul class="activityList">
+            <li class="activityList__item"><a href="/admin/manageUsers" class="activityList__link">Manage Users</a></li>
+            <li class="activityList__item"><a href="/admin/manageProducts" class="activityList__link">Manage Products</a></li>
+        </ul>
+    </main>
+    
+    <%- include('../includes/footer') %>
+</body>
+</html>

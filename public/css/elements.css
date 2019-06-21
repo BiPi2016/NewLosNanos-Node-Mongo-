@@ -1,0 +1,16 @@
+.inputText {
+    border: 2px solid var(--creamy-purple);
+    color: var(--creamy-purple);
+}
+
+.inputText:hover,
+.inputText:focus {
+    background-color: var(--creamy-purple);
+    border: 2px solid var(--pinkish-gray);
+    color: var(--pinkish-gray);
+}
+
+@media only screen and (min-width: 800px) {
+
+}
+

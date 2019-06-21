@@ -1,0 +1,38 @@
+.title,
+.activityHeader {
+    color: var(--my-blue);
+    text-align: center;
+    padding: 10px;
+    margin: 10px auto;
+}
+
+.activityList {
+    list-style: none;
+    min-height: 50vh;
+    width: 50vw;
+    margin: 10px auto;
+    padding: 30px;
+    border: 2px solid var(--creamy-purple-dark);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+.activityList__link {
+    text-decoration: none;
+    color: var(--creamy-purple-dark);
+    font-size: 1.5em;
+    padding: 10px;
+    margin: 30px;
+    border: 2px solid pink;
+    border-radius: 5px;
+}
+.activityList__link:hover {
+    background-color: var(--creamy-purple-dark);
+    color: var(--pearl-white);
+    box-shadow: 0px 0px 20px var(--light-purple);
+}
+
+
+@media only screen and (min-width: 800px) {
+
+}
