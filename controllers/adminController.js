@@ -54,7 +54,8 @@ exports.getManageProducts = (req, res, next) => {
 
 // Get Add Product
 exports.getAddProduct = (req, res, next) => {
-    console.log('add new product');
+    console.log('add new product' + JSON.stringify(topCategory[0].subCats[0].name));
+    
     res.render('./adminViews/addProduct', {
         title: 'Add Product',
         topMenu: topCategory,

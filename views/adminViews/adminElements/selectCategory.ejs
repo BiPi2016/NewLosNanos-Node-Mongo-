@@ -1,9 +1,10 @@
 <section class="dropDownContainer">
-    <label for="category" class="formLabel">Category</label>    
-    <select name="category" id="prodCategory" class="formInput catSelection" required>
-        <option value="clothes" selected class="selectOption">Clothes</option>
-        <option value="shoes" class="selectOption">Shoes</option>
-        <option value="accessories"  class="selectOption">accessories</option>
-        <option value="ethnic"  class="selectOption">ethnic</option>
+    <label for="category" class="formLabel centerFlex">Category</label>    
+    <select name="category" id="prodCategory" class="formInput catSelection adminDropDown" required>    
+        <% topMenu[0].subCats.forEach( (menu, index) => {%>
+            <% let opSelected = (index === 0) ? 'selected' : '' %>
+            <option value="<%=menu.name%>"  class="selectOption"<%=opSelected%> ><%=menu.name%></option> 
+        <%}) %>
+       
     </select>
 </section>
