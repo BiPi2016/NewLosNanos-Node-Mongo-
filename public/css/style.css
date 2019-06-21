@@ -25,6 +25,12 @@ a {
   color: #00B7FF;
 }
 
+.centerFlexEven {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 .pageTitle {
   background-color: var(--brick-red);
   color: var(--pearl-white);

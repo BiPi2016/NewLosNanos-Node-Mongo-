@@ -34,6 +34,15 @@ exports.postLogIn = (req, res, next) => {
     // else redirect to signin page
 };
 
+// Get Manage Users
+exports.getManageUsers = (req, res, next) => {
+    res.render('./adminViews/manageUsers', {
+        title: 'Manage Users',
+        topMenu: topCategory,
+        footerMenu: footerMenu
+    });
+}
+
 // Get Manage Products
 exports.getManageProducts = (req, res, next) => {
     res.render('./adminViews/manageProducts', {
@@ -56,7 +65,9 @@ exports.getAddProduct = (req, res, next) => {
 // Post Add Product
 exports.postAddProduct = (req, res, next) => {
     console.log('New Product');
-    console.log('req.body');
+    console.log(req.body);
+
+    res.send(req.body);
     //validate
 
     // sanitize
