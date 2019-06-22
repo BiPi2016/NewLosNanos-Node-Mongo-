@@ -29,7 +29,7 @@
 .activityList {
     list-style: none;
     min-height: 50vh;
-    width: 50vw;
+    width: 80vw;
     margin: 10px auto;
     padding: 30px;
     border: 2px solid var(--creamy-purple-dark);
@@ -39,7 +39,7 @@
     flex-wrap: wrap;
 }
 .activityList__item {
-    width: 45%;
+    width: 30%;
 
 }
 .activityList__link {

@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const adminController = require('../controllers/adminController');
+const categoryController = require('../controllers/categoryController');
+const prodTypeController =  require('../controllers/prodTypeController');
+const sizeController = require('../controllers/sizeController');
+
 
 
 // Get Admin login
@@ -12,6 +16,9 @@ router.post('/login', adminController.postLogIn);
 // Get Admin Homepage
 router.get('/', adminController.getAdminPage);
 
+// Get Manage users
+router.get('/manageUsers', adminController.getManageUsers);
+
 // Get Manage Products
 router.get('/manageProducts', adminController.getManageProducts);
 
@@ -21,22 +28,27 @@ router.get('/addProduct', adminController.getAddProduct);
 // Post Add Product
 router.post('/addProduct', adminController.postAddProduct);
 
-// Get Add Product
-router.get('/addCategory', adminController.getAddCategory);
 
-// Post Add Product
-router.post('/addCategory', adminController.postAddCategory);
+// Get All Categories
+router.get('/prodCategories', categoryController.getCategories);
+// Get Add Category
+router.get('/addCategory', categoryController.getAddCategory);
+// Post Add Category
+router.post('/addCategory', categoryController.postAddCategory);
 
-// Get Add Product
-router.get('/addProdType', adminController.getAddProdType);
 
-// Post Add Product
-router.post('/addProdType', adminController.postAddProdType);
-// Get Add Product
-router.get('/addSize', adminController.getAddSize);
+// Get All Product Types
+router.get('/prodTypes', prodTypeController.getProdTypes);
+// Get Add Type
+router.get('/addProdType', prodTypeController.getAddProdType);
+// Post Add Type
+router.post('/addProdType', prodTypeController.postAddProdType);
 
-// Post Add Product
-router.post('/addSize', adminController.postAddSize);
-
+// Get sizes
+router.get('/prodSizes', sizeController.getSizes);
+// Get Add Size
+router.get('/addSize', sizeController.getAddSize);
+// Post Add size
+router.post('/addSize', sizeController.postAddSize);
 
 module.exports = router;

@@ -1,0 +1,20 @@
+<%- include('../includes/start') %>
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <%- include('../includes/topNav') %>
+    <%- include('./adminMenu') %>
+    <h1 class="title"><%=title%></h1>
+    <main>
+        <%if(locals.prodTypes) {%>
+            <ul class="itemList">
+            <%prodTypes.forEach( prodType => {%>
+                <li class="itemList__item"><%=prodType%></li>
+            <%})%>
+            </ul>
+        <%} else {%>
+            <h2>Could not find any Product Type</h2>
+        <%}%>
+    </main>
+</body>
+</html>

@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 const prodTypeSchema = new Schema(
     {
         name: {
-            prodType: String,
-            minlength: 1,
+            type: String,
+            minlength: 1
         }
     }
 );
