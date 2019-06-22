@@ -9,15 +9,15 @@
     <form action="" method="post" class="newProductForm">
         <section class="fieldContainer">
             <label for="brand" class="formLabel">Brand</label>
-            <input type="text" name="brand" id="brand" class="formInput">
+            <input type="text" name="brand" id="brand" class="formInput" required>
         </section>
         <section class="fieldContainer">
             <label for="name" class="formLabel">Name</label>
-            <input type="text" name="name" id="name" class="formInput">
+            <input type="text" name="name" id="name" class="formInput" required>
         </section>
         <section class="fieldContainer">
             <label for="price" class="formLabel">Price</label>
-            <input type="number" name="price" id="price" class="formInput">
+            <input type="number" name="price" id="price" class="formInput" required>
         </section>
         <section class="fieldContainer centerFlexSpaceBetween" id="prodClassification">
             <%- include('./adminElements/selectGender') %>
