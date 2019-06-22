@@ -1,0 +1,14 @@
+<div class="productLink">
+    <section class="productInfo">
+        <div class="productImageContainer">
+            <img src="/images/<%=p.type%>/<%=p.imageUrl%>" alt="<%=p.name%>" class="productImage">
+        </div>
+        <p class="productBrand"><%=p.brand%></p>
+        <p class="productName"><%=p.name%></p>
+        <p class="productPrice"><%=p.price%> <span class="currency">SEK</span></p>
+    </section>
+    <div class="centerFlexSpaceBetween">            
+        <a href="/admin/addProduct">Edit</a>
+        <a href="/admin/deleteProduct">Delete</a>
+    </div>
+</div>

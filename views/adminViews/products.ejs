@@ -1,0 +1,21 @@
+<%- include('../includes/start') %>
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/admin.css">
+<link rel="stylesheet" href="/css/categories.css">
+</head>
+<body>
+    <%- include('./adminMenu') %>
+    <h1 class="title"><%=title%></h1>
+    <main>
+        <div  class="productListing">
+            <%if(locals.products) {%>
+                <% products.forEach( product => {%>
+                    <%- include('./adminElements/product', { p: product}) %>
+                <%})%>
+            <%} else {%>
+                <h2 class="title">No products to show</h2>
+            <%}%>
+        </div>
+    </main>
+</body>
+</html>

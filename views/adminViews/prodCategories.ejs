@@ -1,0 +1,21 @@
+<%- include('../includes/start') %>
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <%- include('../includes/topNav') %>
+    <%- include('./adminMenu') %>
+    <h1 class="title"><%=title%></h1>
+    <main>
+        <%if(locals.categories) {%>
+            <ul class="itemList">
+            <%categories.forEach( category => {%>
+                <li class="itemList__item"><%=category%></li>
+            <%})%>
+            </ul>
+        <%} else {%>
+            <h2>No Category Found</h2>
+        <%}%>
+    </main>
+
+</body>
+</html>

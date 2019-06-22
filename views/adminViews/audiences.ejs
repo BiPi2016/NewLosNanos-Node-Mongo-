@@ -1,0 +1,29 @@
+<%- include('../includes/start') %>
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <%- include('../includes/topNav') %>
+    <%- include('./adminMenu') %>
+    <h1 class="title"><%=title%></h1>
+    <main>
+        <%if(locals.audiences) {%>
+            <ol class="itemList">
+            <%audiences.forEach( audience => {%>
+                <li class="itemList__item">
+                    <div class="listProps">
+                        <span class="sectionName centerFlex">Id</span>
+                        <span class="sectionValue"><%=audience._id%></span>
+                    </div>
+                    <div class="listProps">
+                        <span class="sectionName centerFlex">Name</span>
+                        <span class="sectionValue"><%=audience.name%></span>
+                    </div>                    
+                </li>
+            <%})%>
+            </ol>
+        <%} else {%>
+            <h2>Could not find any Audience Type</h2>
+        <%}%>
+    </main>
+</body>
+</html>

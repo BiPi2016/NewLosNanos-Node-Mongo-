@@ -1,6 +1,15 @@
+const Product = require('../models/product');
+const Size = require('../models/size');
+const ProdType = require('../models//prodType');
+const Category = require('../models/category');
+
 const topCategory = require('../util/menu');
 const footerMenu = require('../util/footer');
 const resources = require('../util/resourceLocator');
+
+const async = require('async');
+const { body, validationResult } = require('express-validator');
+const { sanitizeBody } = require('express-validator');
 
 // Admin home page
 exports.getAdminPage = (req, res, next) => {
@@ -52,6 +61,19 @@ exports.getManageProducts = (req, res, next) => {
     });
 }
 
+// Get All Products
+exports.getProducts = (req, res, next) => {
+    Product.find({})
+    .exec( (err, results) => {
+        if(err)
+            return next(err);
+        res.render('./adminViews/products.ejs', {
+            title: 'All Products',
+            products: results
+        });
+    });
+}
+
 // Get Add Product
 exports.getAddProduct = (req, res, next) => {
     console.log('add new product' + JSON.stringify(topCategory[0].subCats[0].name));
@@ -81,45 +103,3 @@ exports.postAddProduct = (req, res, next) => {
 exports.postDeleteProduct = (req, res, next) => {
     console.log('About to delete a product');
 }
-
-// Get Add Category
-exports.getAddCategory = (req, res, next) =>{
-    res.render('./adminViews/addCategory', {
-        title: 'Add New Category',
-        topMenu: topCategory,
-        footerMenu: footerMenu
-    });
-}
-
-// Post Add Category
-exports.postAddCategory = (req, res, next) =>{
-    
-}
-
-// Get Add Prodcut Type
-exports.getAddProdType = (req, res, next) =>{
-    res.render('./adminViews/addProdType', {
-        title: 'Add new product type',
-        topMenu: topCategory,
-        footerMenu: footerMenu
-    });
-}
-
-// Post Add ProdType
-exports.postAddProdType = (req, res, next) =>{
-    
-}
-// Get Add Size
-exports.getAddSize = (req, res, next) =>{
-    res.render('./adminViews/addSize', {
-        title: 'Add new size',
-        topMenu: topCategory,
-        footerMenu: footerMenu
-    });
-}
-
-// Post Add Size
-exports.postAddSize = (req, res, next) =>{
-    
-}
-

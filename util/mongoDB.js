@@ -24,7 +24,7 @@ module.exports = () => {
     const db = mongoose.connection;
     db.on('error', () => console.log('Error while connecting to the database'));
     db.once('open', () => console.log('Connected to the database'));
-}
+};
 
 
 

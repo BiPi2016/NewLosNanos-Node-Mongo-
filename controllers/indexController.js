@@ -2,6 +2,10 @@ const topCategory = require('../util/menu');
 const footerMenu = require('../util/footer');
 const resources = require('../util/resourceLocator');
 
+const async = require('async');
+const { body, validationResult } = require('express-validator');
+const { sanitizeBody } = require('express-validator');
+
 const products = [
     {
         brand: 'Duke',

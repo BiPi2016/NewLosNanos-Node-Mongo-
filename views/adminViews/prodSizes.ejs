@@ -1,0 +1,20 @@
+<%- include('../includes/start') %>
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <%- include('../includes/topNav') %>
+    <%- include('./adminMenu') %>
+    <h1 class="title"><%=title%></h1>
+    <main>
+        <%if(locals.prodSizes) {%>
+            <ul class="itemList">
+            <%prodSizes.forEach( prodSize => {%>
+                <li class="itemList__item"><%=prodSize%></li>
+            <%})%>
+            </ul>
+        <%} else {%>
+            <h2 class="title">No sizes found</h2>
+        <%}%>
+    </main>
+</body>
+</html>

@@ -32,11 +32,7 @@ const productSchema = new Schema(
         type: {
             type: Schema.Types.ObjectId,
             ref: 'types'
-        },        
-        sizes: [{
-            type: String
-        }]
-
+        }
     }
 );
 
