@@ -1,10 +1,25 @@
-.newProductForm {
-    border: 1px solid var(--creamy-purple);
-    border-radius: 5px;
+form {
     padding: 10px;
     margin: 10px auto;
+    border: 2px solid var(--creamy-purple);
+    border-radius: 5px;
+    background-color: var(--pearl-white);    
+    box-shadow: 0px 0px 10px var(--light-purple);
+}
+
+.contactUsForm {
+    margin: 20px auto;
+}
+
+.newProductForm {
     width: 90%;
 }
+
+textarea {
+    resize: none;
+    overflow: auto;
+}
+
 
 .dropDownContainer { 
     text-transform: capitalize;
@@ -64,5 +79,13 @@
     color: var(--creamy-purple-dark);
     background: var(--pearl-white);
     outline-color: pink;    
+}
+
+@media only screen and (min-width: 800px) {
+    .contactUsForm,
+    .newCategoryForm {
+        margin: 20px auto;
+        width: 60%;
+    }
 }
 

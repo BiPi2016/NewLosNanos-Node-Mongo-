@@ -1,0 +1,32 @@
+<%- include('../includes/start') %>
+<link rel="stylesheet" href="/css/admin.css">
+<link rel="stylesheet" href="/css/forms.css">
+</head>
+<body>
+
+    <%- include('./adminMenu') %>
+    <h1 class="pageTitle"><%=title%></h1>
+    <form action="" method="post" class="newProdTypeForm">
+        <div class="centerFlexSpaceBetween">
+            <section class="fieldContainer">
+                <label for="category" class="formLabel">Category</label>
+                <input type="text" name="Category" id="Category" class="formInput" required>
+                <select name="category" id="category" class="formInput">
+                    <%= %>
+                </select>
+            </section>
+            
+            <section class="fieldContainer">
+                <label for="category" class="formLabel">Product Type</label>
+                <input type="text" name="Category" id="Category" class="formInput" required>
+            </section>
+        </div>
+        
+        <div class="centerFlex">
+            <button type="submit" class="formBtn formInput">Submit</button>
+            <button type="reset" class="formBtn formInput">Reset</button>
+        </div>
+    </form>
+
+</body>
+</html>
