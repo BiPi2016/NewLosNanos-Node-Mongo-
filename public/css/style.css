@@ -32,6 +32,16 @@ a {
 }
 
 .pageTitle {
+  color: var(--my-blue);
+  margin: 20px auto;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+}
+
+.sectionTitle {
+  margin: 10px auto 0;
   background-color: var(--brick-red);
   color: var(--pearl-white);
   text-align: center;
@@ -170,9 +180,12 @@ a {
   overflow: hidden;
 }
 .productImageContainer {
-  overflow: hidden
+  overflow: hidden;
+  border-radius: 5px;
 }
 .productImage {
+  display: block;
+  border-radius: 5px;
   min-width: 100%;
   max-width: 100%;
   min-height: 100%;

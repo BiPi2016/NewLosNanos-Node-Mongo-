@@ -2,16 +2,16 @@ const boys = {
     categories: ['cloths', 'shoes', 'accessories', 'ethnic'],
     types: [
         ['jeans', 'trousers and chinos', 'shirts', 't-shirts', 'jerseys', 'jackets', 'coats', 'rain-gear', 'ethnic'],
-        ['sneakers', 'dressing-shoes', 'boots', 'sandals', 'hawainas', 'gum-boots and others', 'ethnic'],
-        ['caps and hats', 'clocks', 'belts', 'socks', 'under-garments', 'mufllers', 'gloves', 'body-warmers'],
-        ['kurtas and pijamas', 'vests', 'dhoti kurtas', 'sherwanis', 'lohis' ]
+        ['sneakers', 'dressing-shoes', 'boots', 'sandals', 'hawaianas', 'gum-boots and others', 'ethnic'],
+        ['caps and hats', 'clocks', 'belts', 'socks', 'under-garments', 'mufllers', 'gloves', 'body-warmers', 'lohis'],
+        ['kurtas and pijamas', 'vests', 'dhoti kurtas', 'sherwanis' ]
     ]
 }
 
 const girls = {
     categories: ['cloths', 'shoes', 'accessories', 'ethnic'],
     types: [
-        ['jeans', 'trousers and chinos', 'shirts', 't-shirts', 'jerseys', 'jackets', 'coats', 'skirts', 'rain-gear', 'ethnic'],
+        ['jeans', 'trousers and chinos', 'shirts', 't-shirts', 'jerseys', 'jackets', 'coats', 'skirts', 'rain-gear', 'ethn  ],
         ['sneakers', 'dressing-shoes', 'boots', 'sandals', 'hawainas', 'gum-boots and others', 'ethnic'],
         ['caps and hats', 'clocks', 'belts', 'socks', 'leggings', 'under-garments', 'mufllers', 'gloves', 'body-warmers', 'hair accessories', 'shawls'],
         ['salwar-kurta', 'lehnga-cholis / ghagra-cholis', 'vests', 'jacekts', 'saaris'],

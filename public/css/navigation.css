@@ -104,6 +104,7 @@ header {
 .authentication-msg {
     margin-left: 5px;
     margin-bottom: 3px;
+    color: var(--creamy-purple-dark);
 }
 
 /* Shopping Cart*/
@@ -125,6 +126,7 @@ header {
     width: 20px;
     height: 20px;
     background-color: var(--brick-red);
+    color: var(--pearl-white);
     display: flex;
     justify-content: center;
     align-content: center;

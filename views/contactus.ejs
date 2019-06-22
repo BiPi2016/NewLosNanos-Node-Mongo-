@@ -1,9 +1,32 @@
 <%-include('./includes/start') %>
+<link rel="stylesheet" href="/css/forms.css">
 </head>
 <body>
     <%-include('./includes/topNav')%>
-    <h1><%=title%></h1>
-    <main></main>
+    <h1 class="pageTitle"><%=title%></h1>
+    <main>
+        <form action="" method="post" class="contactUsForm">
+            <section class="fieldContainer">
+                <label for="firstname" class="formLabel">First name</label>
+                <input type="text" name="firstname" id="firstname" class="formInput">
+            </section>
+            <section class="fieldContainer">
+                <label for="lastname" class="formLabel">Last name</label>
+                <input type="text" name="lastname" id="lastname" class="formInput">
+            </section>
+            <section class="fieldContainer">
+                <label for="telephone" class="formLabel">Telephone</label>
+                <input type="text" name="telephone" id="telephone" class="formInput">
+            </section>
+            <section class="fieldContainer">
+                <label for="telephone" class="formLabel">Message</label>
+                <textarea name="" id="message" cols="100" rows="8" class="formInput">
+                    Write your message here...
+                </textarea>
+            </section>
+            <button class="formBtn formInput">Submit</button>
+        </form>
+    </main>
 </body>
 <%-include('./includes/footer')%>
 </html>

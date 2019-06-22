@@ -36,10 +36,18 @@
     border-radius: 5px;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+}
+.activityList__item {
+    width: 45%;
+
 }
 .activityList__link {
+    width: 260px;
     text-decoration: none;
-    text-transform: uppercase;  
+    text-transform: uppercase; 
+    text-align: center;
+    vertical-align: middle; 
     color: var(--creamy-purple-dark);
     font-size: 1.2em;
     padding: 10px;
