@@ -39,7 +39,7 @@
     flex-wrap: wrap;
 }
 .activityList__item {
-    width: 30%;
+    width: 45%;
 
 }
 .activityList__link {
@@ -59,6 +59,37 @@
     background-color: var(--creamy-purple-dark);
     color: var(--pearl-white);
     box-shadow: 0px 0px 10px var(--creamy-purple);
+}
+
+.itemList {
+    margin: 10px auto;
+    width: 90%;
+}
+.itemList__item {
+    border-bottom: 1px solid var(--my-blue);
+    padding: 10px;
+    margin: 10px auto;
+    border: 2px solid var(--creamy-purple-dark);
+    padding: 10px;
+}
+.listProps {
+    display: flex;
+    align-items: center;
+}
+.sectionName {
+    background-color: var(--my-blue);
+    color: var(--light-gray);
+    justify-content: flex-start;
+    padding: 10px;
+    min-width: 150px;
+    margin: 5px 0;
+}
+.sectionValue {
+    color: var(--my-blue);
+    background-color: var(--light-gray);
+    padding: 10px;
+    width: 100%;
+    text-transform: capitalize;
 }
 
 

@@ -1,4 +1,5 @@
-form {
+form,
+.formTypeContainer {
     padding: 10px;
     margin: 10px auto;
     border: 2px solid var(--creamy-purple);

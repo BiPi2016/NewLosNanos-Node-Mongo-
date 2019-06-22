@@ -1,6 +1,7 @@
 const topCategory = require('../util/menu');
 const footerMenu = require('../util/footer');
 const resources = require('../util/resourceLocator');
+const helperFunc = require('../util/helperFunctions');
 
 const Category = require('../models/category');
 

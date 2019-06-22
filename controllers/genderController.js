@@ -1,41 +1,30 @@
 const topCategory = require('../util/menu');
 const footerMenu = require('../util/footer');
 const resources = require('../util/resourceLocator');
+const chalk =  require('chalk');
 const helperFunc = require('../util/helperFunctions');
 
-const Size = require('../models/size');
+const Gender = require('../models/gender');
 const ProdType = require('../models/prodType');
+const Category = require('../models/category');
 
 const async = require('async');
 const { body, validationResult } = require('express-validator');
 const { sanitizeBody } = require('express-validator');
 
-
-// Get all sizes
-exports.getSizes = (req, res, next) => {
-    Size.find({})
+//Get all genders
+exports.getAudiences = (req, res, next) => {
+    console.log(chalk('Getting all genders'));
+    console.log('inside gender locator')
+    Gender.find({})
     .exec( (err, results) => {
         if(err)
             return next(err);
-        res.render('./adminViews/prodSizes', {
-            title: 'All Product-sizes',
+        res.render('./adminViews/audiences', {
+            title: 'All Audience',
             topMenu: topCategory,
             footerMenu: footerMenu,
-            prodSizes: results
+            audiences: results
         });
     });
 };
-
-// Get Add Size
-exports.getAddSize = (req, res, next) => {
-    res.render('./adminViews/addSize', {
-        title: 'Add new size',
-        topMenu: topCategory,
-        footerMenu: footerMenu
-    });
-}
-
-// Post Add Size
-exports.postAddSize = (req, res, next) =>{
-    
-}

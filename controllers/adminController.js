@@ -1,3 +1,4 @@
+const Product = require('../models/product');
 const Size = require('../models/size');
 const ProdType = require('../models//prodType');
 const Category = require('../models/category');
@@ -57,6 +58,19 @@ exports.getManageProducts = (req, res, next) => {
         title: 'Manage Products',
         topMenu: topCategory,
         footerMenu: footerMenu
+    });
+}
+
+// Get All Products
+exports.getProducts = (req, res, next) => {
+    Product.find({})
+    .exec( (err, results) => {
+        if(err)
+            return next(err);
+        res.render('./adminViews/products.ejs', {
+            title: 'All Products',
+            products: results
+        });
     });
 }
 

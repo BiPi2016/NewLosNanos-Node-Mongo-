@@ -4,6 +4,7 @@ const adminController = require('../controllers/adminController');
 const categoryController = require('../controllers/categoryController');
 const prodTypeController =  require('../controllers/prodTypeController');
 const sizeController = require('../controllers/sizeController');
+const genderController = require('../controllers/genderController');
 
 
 
@@ -22,11 +23,18 @@ router.get('/manageUsers', adminController.getManageUsers);
 // Get Manage Products
 router.get('/manageProducts', adminController.getManageProducts);
 
+//Get All Products
+router.get('/products', adminController.getProducts);
+
 // Get Add Product
 router.get('/addProduct', adminController.getAddProduct);
 
 // Post Add Product
 router.post('/addProduct', adminController.postAddProduct);
+
+//Get Target audience
+router.get('/audiences', genderController.getAudiences);
+
 
 
 // Get All Categories

@@ -1,5 +1,7 @@
 <%- include('../includes/start') %>
+<link rel="stylesheet" href="/css/forms.css">
 <link rel="stylesheet" href="/css/admin.css">
+
 </head>
 <body>
     <%- include('../includes/topNav') %>
@@ -7,10 +9,14 @@
     <h1 class="title"><%=title%></h1>
     <main>
         <h2 class="activityHeader">What do you wish to do?</h2>
-        <ul class="activityList">
+        <ul class="activityList formTypeContainer">
+
+            <li class="activityList__item centerFlex"><a href="/admin/audiences" class="activityList__link">All Target Audiences</a></li>
+            <li class="activityList__item centerFlex"><a href="/admin/addAudience" class="activityList__link">Add new audience</a></li>
+            
             <li class="activityList__item centerFlex"><a href="/admin/products" class="activityList__link">All Products</a></li>
-            <li class="activityList__item centerFlex"><a href="/admin/addProduct" class="activityList__link">Add new product</a></li>
-            <li class="activityList__item centerFlex"><a href="/admin/manageProducts" class="activityList__link">Manage Products</a></li>
+            <li class="activityList__item centerFlex"><a href="/admin/addProduct" class="activityList__link">Add new product</a></li><!-- 
+            <li class="activityList__item centerFlex"><a href="/admin/manageProducts" class="activityList__link">Manage Products</a></li> -->
 
             <li class="activityList__item centerFlex"><a href="/admin/prodCategories" class="activityList__link">All Categories</a></li>
             <li class="activityList__item centerFlex"><a href="/admin/addCategory" class="activityList__link">Add new category</a></li>
