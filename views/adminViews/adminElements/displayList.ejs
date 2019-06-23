@@ -1,0 +1,9 @@
+<section class="dropDownContainer">
+    <label for="category" class="formLabel centerFlex"><%=listName%></label>    
+    <select name="category" id="prodCategory" class="formInput catSelection adminDropDown" required>    
+        <% listMembers.forEach( (member, index) => {%>
+            <% let opSelected = (index === 0) ? 'selected' : '' %>
+            <option value="<%=member._id%>"  class="selectOption"<%=opSelected%> ><%=member.name%></option> 
+        <%}) %>       
+    </select>
+</section>

@@ -4,7 +4,6 @@
         <% topMenu[0].subCats.forEach( (menu, index) => {%>
             <% let opSelected = (index === 0) ? 'selected' : '' %>
             <option value="<%=menu.name%>"  class="selectOption"<%=opSelected%> ><%=menu.name%></option> 
-        <%}) %>
-       
+        <%}) %>       
     </select>
 </section>

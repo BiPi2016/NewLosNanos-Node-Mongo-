@@ -4,6 +4,7 @@ const resources = require('../util/resourceLocator');
 const helperFunc = require('../util/helperFunctions');
 
 const Category = require('../models/category');
+const Gender = require('../models/gender');
 
 const async = require('async');
 const { body, validationResult } = require('express-validator');
@@ -27,10 +28,17 @@ exports.getCategories = (req, res, next) => {
 
 // Get Add Category
 exports.getAddCategory = (req, res, next) =>{
-    res.render('./adminViews/addCategory', {
-        title: 'Add New Category',
-        topMenu: topCategory,
-        footerMenu: footerMenu
+    helperFunc.log('Get add category');
+    Gender.find({})
+    .exec( (err, results) => {
+        if(err)
+            next(err);
+        res.render('./adminViews/addCategory', {
+            title: 'Add New Category',
+            topMenu: topCategory,
+            footerMenu: footerMenu,
+            audiences: results
+        });
     });
 }
 
@@ -57,24 +65,27 @@ exports.postAddCategory = [
             });
         }
 
+        // Create a new category
+        const category = new Category({ name: req.body.category});
+
         // Check if category already exists
         Category.find({name: req.body.category})
         .exec( (err, result) => {
+            helperFunc.yLog('Data entered');
             if(err)
                 return next(err);
             // Category already exists
             if(result !== null) {
+                helperFunc.yLog('Data exists previously');
                 return res.render('./adminViews/addCategory', {
                     title: 'Add New Category',
                     topMenu: topCategory,
                     footerMenu: footerMenu,
-                    category: req.body,
+                    category: category,
                     errors: [new Error('Category Already Exists!!')]
                 });
             }
 
-            // Create a new category
-            const category = new Category({ name: req.body.category});
             category.save( (err, result) => {
                 if(err)
                     return next(err);

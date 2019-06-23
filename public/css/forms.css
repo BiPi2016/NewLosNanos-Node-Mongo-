@@ -52,6 +52,7 @@ textarea {
     min-width: 100px;
 }
 .formInput {
+    text-transform: capitalize;
     padding: 10px;
     border: 1px solid var(--creamy-purple-dark);
     border-radius: 5px;

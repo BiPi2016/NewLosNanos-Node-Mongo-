@@ -7,15 +7,30 @@
     <%- include('./adminMenu') %>
     <h1 class="pageTitle"><%=title%></h1>
     <form action="" method="post" class="newCategoryForm">
-        <section class="fieldContainer">
-            <label for="category" class="formLabel">Catetory Name</label>
-            <input type="text" name="category" id="category" class="formInput" required>
+        <section class="centerFlexSpaceBetween">
+            <%- include('./adminElements/displayList', {listName: 'Audience', listMembers: audiences}) %>
+            <section class="fieldContainer">
+                <label for="category" class="formLabel">Catetory Name</label>
+                <input type="text" name="category" id="category" class="formInput" required value="<%= locals.category ? category.name : '' %>">
+            </section>
         </section>
+    
         <div class="centerFlex">
             <button type="submit" class="formBtn formInput">Submit</button>
             <button type="reset" class="formBtn formInput">Reset</button>
         </div>
     </form>
+
+    <% if(locals.errors) {%>
+        <h2 class="title">Following errors occured!!</h2>
+        <ol class="itemList">
+            <%errors.forEach( error => {%>
+                <li class="itemList__item">
+                    <span class="sectionValue"><%=error.msg ? error.msg : error%></span>
+                </li>
+            <%})%>
+        </ol>        
+    <%}%>
 
 </body>
 </html>
