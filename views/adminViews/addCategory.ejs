@@ -8,10 +8,10 @@
     <h1 class="pageTitle"><%=title%></h1>
     <form action="" method="post" class="newCategoryForm">
         <section class="centerFlexSpaceBetween">
-            <%- include('./adminElements/displayList', {listName: 'Audience', listMembers: audiences}) %>
+            <%- include('./adminElements/displayList', {listName: 'audience', listMembers: audiences, }) %>
             <section class="fieldContainer">
-                <label for="category" class="formLabel">Catetory Name</label>
-                <input type="text" name="category" id="category" class="formInput" required value="<%= locals.category ? category.name : '' %>">
+                <label for="categoryName" class="formLabel">Catetory Name</label>
+                <input type="text" name="categoryName" id="categoryName" class="formInput" required value="<%= (locals.category) ? category.name : '' %>">
             </section>
         </section>
     

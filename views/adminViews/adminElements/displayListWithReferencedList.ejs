@@ -3,7 +3,9 @@
     <select name="<%=listName%>" id="displayList" class="formInput adminDropDown" required>    
         <% listMembers.forEach( (member, index) => {%>
             <% let opSelected = (index === 0) ? 'selected' : '' %>
-            <option value="<%=member._id%>"  class="selectOption"<%=opSelected%> ><%=member.name%></option> 
+            <option value="<%=member._id%>"  class="selectOption"<%=opSelected%> >
+                <%=member.name%> <%= locals.showRelated ? "for "+ member.refField : ''%>
+            </option> 
         <%}) %>       
     </select>
 </section>

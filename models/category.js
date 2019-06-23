@@ -5,12 +5,12 @@ const categorySchema = new Schema(
     {
         name: {
             type: String,
-            minlength: 2,
-            enum: ['clothes', 'shoes', 'accessories', 'ehnic']
+            minlength: 2
         },
         audience: {
             type: Schema.Types.ObjectId,
-            ref: 'gender'
+            ref: 'Gender',
+            required: true
         }
     }    
 );

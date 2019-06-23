@@ -1,10 +1,10 @@
+const Category = require('../models/category');
+const Gender = require('../models/gender');
+
 const topCategory = require('../util/menu');
 const footerMenu = require('../util/footer');
 const resources = require('../util/resourceLocator');
 const helperFunc = require('../util/helperFunctions');
-
-const Category = require('../models/category');
-const Gender = require('../models/gender');
 
 const async = require('async');
 const { body, validationResult } = require('express-validator');
@@ -14,6 +14,7 @@ const { sanitizeBody } = require('express-validator');
 // Get All Categories
 exports.getCategories = (req, res, next) => {
     Category.find({})
+    .populate('audience')
     .exec( (err, results) => {
         if(err)
             return next(err);
@@ -45,52 +46,75 @@ exports.getAddCategory = (req, res, next) =>{
 // Post Add Category
 exports.postAddCategory = [
     // Validating input
-    body('category').isLength({min:2}).trim().withMessage("Category name must be more than 2 characters long"),
+    body('categoryName').isLength({min:2}).trim().withMessage("Category name must be more than 2 characters long"),
 
     // Sanitize
-    sanitizeBody('category').escape(),
+    sanitizeBody('categoryName').escape(),
 
     function(req, res, next) {
-        // Process the request
-        const errors = validationResult(req);
-
-        // If errors in input
-        if(!errors.isEmpty()) {
-            res.render('./adminViews/addCategory', {
-                title: 'Add New Category',
-                topMenu: topCategory,
-                footerMenu: footerMenu,
-                category: req.body,
-                errors: errors.array()
-            });
-        }
-
-        // Create a new category
-        const category = new Category({ name: req.body.category});
-
-        // Check if category already exists
-        Category.find({name: req.body.category})
-        .exec( (err, result) => {
-            helperFunc.yLog('Data entered');
+        async.parallel( {
+            audiences: function(cb) {
+                Gender.find({}).exec(cb);
+            },
+            categories: function(cb) {
+                Category.find({name: req.body.categoryName})
+                .where('audience').equals(req.body.audience)
+                .exec(cb);
+            }
+        },
+        function(err, results) {
             if(err)
                 return next(err);
-            // Category already exists
-            if(result !== null) {
-                helperFunc.yLog('Data exists previously');
+
+            //what does query fetch??'
+            console.log('Presave checks:')
+            console.log(results.categories);
+
+            // Process the request
+            const errors = validationResult(req);   
+            
+            const category = new Category({ 
+                audience: req.body.audience,
+                name: req.body.categoryName
+            });
+
+            helperFunc.yLog('This is the new category');
+            helperFunc.yLog(category);
+
+            // If errors in input
+            if(!errors.isEmpty()) {
                 return res.render('./adminViews/addCategory', {
                     title: 'Add New Category',
                     topMenu: topCategory,
                     footerMenu: footerMenu,
                     category: category,
+                    errors: errors.array()
+                });
+            }
+
+            // Category already exists
+            if(results.categories.length > 0) {
+                helperFunc.yLog('Data exists previously');
+                
+                helperFunc.yLog(category);
+
+                return res.render('./adminViews/addCategory', {
+                    title: 'Add New Category',
+                    topMenu: topCategory,
+                    footerMenu: footerMenu,
+                    category: category,
+                    audiences: results.audiences,
                     errors: [new Error('Category Already Exists!!')]
                 });
             }
 
-            category.save( (err, result) => {
+            category.save( (err, savedCat) => {
                 if(err)
                     return next(err);
+                console.log('Result of save method: ');
+                console.log(savedCat);
                 res.redirect('/admin/prodCategories');
-            });
+            });            
         });
     }
 ];

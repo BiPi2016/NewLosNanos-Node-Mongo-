@@ -6,7 +6,7 @@
     <%- include('./adminMenu') %>
     <h1 class="title"><%=title%></h1>
     <main>
-        <%if(locals.prodSizes) {%>
+        <%if(locals.prodSizes.length > 0) {%>
             <ul class="itemList">
             <%prodSizes.forEach( prodSize => {%>
                 <li class="itemList__item"><%=prodSize%></li>

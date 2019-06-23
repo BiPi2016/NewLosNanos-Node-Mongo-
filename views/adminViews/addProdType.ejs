@@ -8,17 +8,21 @@
     <h1 class="pageTitle"><%=title%></h1>
     <form action="" method="post" class="newProdTypeForm">
         <div class="centerFlexSpaceBetween">
-            <section class="fieldContainer">
-                <label for="category" class="formLabel">Category</label>
-                <input type="text" name="Category" id="Category" class="formInput" required>
-                <select name="category" id="category" class="formInput">
-                    <%= %>
-                </select>
-            </section>
+                <section class="">
+                    <label for="category" class="formLabel">Categories</label>
+                    <select name="category" id="category" class="formInput adminDropDown" required>    
+                        <% categories.forEach( (category, index) => {%>
+                            <% let opSelected = (index === 0) ? 'selected' : '' %>
+                            <option value="<%=category._id%>"  class="selectOption"<%=opSelected%> >
+                                <%=category.name%> for <%= category.audience.name%>
+                            </option> 
+                        <%}) %>       
+                    </select>
+                </section>
             
             <section class="fieldContainer">
-                <label for="category" class="formLabel">Product Type</label>
-                <input type="text" name="Category" id="Category" class="formInput" required>
+                <label for="prodType" class="formLabel">Product Type</label>
+                <input type="text" name="prodType" id="prodType" class="formInput" required value="<%= locals.prodType ? prodType.name : ''%>">
             </section>
         </div>
         

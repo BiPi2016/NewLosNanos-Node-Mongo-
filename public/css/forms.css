@@ -50,6 +50,7 @@ textarea {
     font-weight: bold;
     letter-spacing: 1px;
     min-width: 100px;
+    text-transform: capitalize;
 }
 .formInput {
     text-transform: capitalize;

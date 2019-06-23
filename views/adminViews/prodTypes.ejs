@@ -6,12 +6,29 @@
     <%- include('./adminMenu') %>
     <h1 class="title"><%=title%></h1>
     <main>
-        <%if(locals.prodTypes) {%>
-            <ul class="itemList">
+        <%if(locals.prodTypes.length > 0) {%>
+            <ol class="itemList">
             <%prodTypes.forEach( prodType => {%>
-                <li class="itemList__item"><%=prodType%></li>
+                <li class="itemList__item">
+                    <div class="listProps">
+                        <span class="sectionName centerFlex">Id</span>
+                        <span class="sectionValue"><%=prodType._id%></span>
+                    </div>
+                    <div class="listProps">
+                        <span class="sectionName centerFlex">Name</span>
+                        <span class="sectionValue"><%=prodType.name%></span>
+                    </div>    
+                    <div class="listProps">
+                        <span class="sectionName centerFlex">Category</span>
+                        <span class="sectionValue"><%=prodType.category.name%></span>
+                    </div>    
+                    <div class="listProps">
+                        <span class="sectionName centerFlex">Audience</span>
+                        <span class="sectionValue"><%=prodType.category.audience.name%></span>
+                    </div>               
+                </li>
             <%})%>
-            </ul>
+            </ol>
         <%} else {%>
             <h2>Could not find any Product Type</h2>
         <%}%>

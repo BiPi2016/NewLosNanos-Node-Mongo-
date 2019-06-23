@@ -5,7 +5,13 @@ const prodTypeSchema = new Schema(
     {
         name: {
             type: String,
-            minlength: 1
+            minlength: 1,
+            required: true
+        },
+        category: {
+            type: Schema.Types.ObjectId,
+            ref: 'Category',
+            required: true
         }
     }
 );
