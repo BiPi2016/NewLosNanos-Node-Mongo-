@@ -1,8 +1,8 @@
 const topCategoryNames =  ['boys', 'girls', "granny's corner"];
 const topCategoryEndPoints = ['/?gender=boys', '/?gender=girls', '/?category=grannys'];
-const boys = ['cloths', 'shoes', 'accessories', 'ethnic'];
+const boys = ['clothes', 'shoes', 'accessories', 'ethnic'];
 const boysCatEndPoints = ['/?gender=boys&catogory=cloths', '/?gender=boys&catogory=shoes', '/?gender=boys&catogory=accessories', '/?gender=boys&catogory=ethnic'];
-const girls = ['cloths', 'shoes', 'accessories', 'ethnic'];
+const girls = ['clothes', 'shoes', 'accessories', 'ethnic'];
 const girlsCatEndPoints = ['/?gender=girls&catogory=cloths', '/?gender=girls&catogory=shoes', '/?gender=girls&catogory=accessories', '/?gender=girls&catogory=ethnic'];
 const grannys = ['scarfs', 'jerseys', 'gloves'];
 const grannysCatEndPoints = ['/?category=grannys&type=scarf', '/?category=grannys&type=jersey', '/?category=grannys&type=gloves'];

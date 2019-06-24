@@ -59,7 +59,7 @@ exports.postAddProdType = [
     // Handle the post request
     function(req, res, next) {
         const prodType = new ProdType( {
-            name: req.body.prodType,
+            name: req.body.prodType.toLowerCase(),
             category: req.body.category
         });
 

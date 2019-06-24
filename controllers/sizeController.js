@@ -1,5 +1,7 @@
 const Size = require('../models/size');
 const ProdType = require('../models/prodType');
+const Category = require('../models/category');
+const Audience = require('../models/gender');
 
 const topCategory = require('../util/menu');
 const footerMenu = require('../util/footer');
@@ -13,6 +15,65 @@ const { sanitizeBody } = require('express-validator');
 
 // Get all sizes
 exports.getSizes = (req, res, next) => {
+    console.log(Object.entries(req.query));
+    if(Object.keys(req.query).length > 0 ) {
+        console.log('There was a query');
+        console.log(Object.entries(req.query));      
+        return(async.waterfall([                
+               function(cb) {
+                    Audience.findOne({name: req.query.audience})
+                    .exec((err, results)=> {
+                        if(err) return next(err);
+                        helperFunc.yLog(results);
+                        cb(null, results);
+                    });
+               },
+               function(resultAud, cb) {
+                   console.log(req.query.category);
+                   Category.find({ $and:[ {audience: resultAud}, {name: req.query.category} ] })
+                    /* Category.find({audience: resultAud}) */
+                    .exec( (err, resultCats) => {
+                        if(err) return next(err);
+                        helperFunc.log(resultCats);
+                        cb(null, resultCats);
+                    });
+               },
+               function(resultCat, cb) {                   
+                    helperFunc.yLog(resultCat);
+                   ProdType.find({ $and: [ {category: resultCat}, {name: req.query.prodType} ] })
+                   .exec( (err, resultType) => {
+                       if(err) return next(err)
+                       helperFunc.debug(resultType)
+                       cb(null, resultType);
+                   });
+               }
+            ], function(err, resultType) {
+                if(err)
+                    return next(err);
+                console.log('type ' + resultType);
+                Size.find({ prodType: resultType })
+                .populate({
+                    path: 'prodType',
+                    select: 'name',
+                    populate: {
+                        path: 'category',
+                        select: 'name',
+                        populate: {
+                            path: 'audience',
+                            select: 'name'
+                        }
+                    }
+                })
+                .exec( (err, results) => {
+                    console.log(results);
+                    return res.json(results);
+                });                        
+           })
+        )       
+    } else {
+        console.log(' No query done' );
+    }
+
     Size.find({})
     .populate({
         path: 'prodType',

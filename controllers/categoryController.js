@@ -75,7 +75,7 @@ exports.postAddCategory = [
             
             const category = new Category({ 
                 audience: req.body.audience,
-                name: req.body.categoryName
+                name: req.body.categoryName.toLowerCase()
             });
 
             helperFunc.yLog('This is the new category');

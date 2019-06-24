@@ -5,7 +5,8 @@ const categorySchema = new Schema(
     {
         name: {
             type: String,
-            minlength: 2
+            minlength: 2,
+            lowercase: true
         },
         audience: {
             type: Schema.Types.ObjectId,
