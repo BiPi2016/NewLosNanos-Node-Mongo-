@@ -22,6 +22,7 @@ const prodClassification = document.getElementById('prodClassification');
 const genderList = document.getElementById('prodGender');
 const catList = document.getElementById('prodCategory');
 const typeList = document.getElementById('prodType');
+const sizeContainer = document.getElementById('sizes');
 
 console.log('selected gender ' + genderList.value);
 console.log('selected category ' + catList.value);
@@ -90,12 +91,14 @@ function getSizes() {
     .then( result => {
         if(result.ok) {
             console.log('Fetch successfull');
-            return result.text();
+            return result.json();
         }
         throw new Error('Some error occured while fetching sizes');
     })
     .then( result => {
-        console.log('This was the result ' + (result));
+        console.log('This was the result ' + JSON.stringify(result));
+        console.log('Sizes: ' + result['sizeNames']);
+        sizeContainer.innerHTML = result['sizeNames'];
 
     })
     .catch( err => {

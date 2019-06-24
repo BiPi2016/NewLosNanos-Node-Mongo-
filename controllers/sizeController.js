@@ -24,34 +24,28 @@ exports.getSizes = (req, res, next) => {
                     Audience.findOne({name: req.query.audience})
                     .exec((err, results)=> {
                         if(err) return next(err);
-                        helperFunc.yLog(results);
                         cb(null, results);
                     });
                },
                function(resultAud, cb) {
                    console.log(req.query.category);
                    Category.find({ $and:[ {audience: resultAud}, {name: req.query.category} ] })
-                    /* Category.find({audience: resultAud}) */
                     .exec( (err, resultCats) => {
                         if(err) return next(err);
-                        helperFunc.log(resultCats);
                         cb(null, resultCats);
                     });
                },
-               function(resultCat, cb) {                   
-                    helperFunc.yLog(resultCat);
+               function(resultCat, cb) {         
                    ProdType.find({ $and: [ {category: resultCat}, {name: req.query.prodType} ] })
                    .exec( (err, resultType) => {
                        if(err) return next(err)
-                       helperFunc.debug(resultType)
                        cb(null, resultType);
                    });
                }
             ], function(err, resultType) {
                 if(err)
                     return next(err);
-                console.log('type ' + resultType);
-                Size.find({ prodType: resultType })
+                Size.findOne({ prodType: resultType })
                 .populate({
                     path: 'prodType',
                     select: 'name',
@@ -66,7 +60,7 @@ exports.getSizes = (req, res, next) => {
                 })
                 .exec( (err, results) => {
                     console.log(results);
-                    return res.json(results);
+                    return res.send(results);
                 });                        
            })
         )       
