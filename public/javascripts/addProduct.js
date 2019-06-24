@@ -98,8 +98,31 @@ function getSizes() {
     .then( result => {
         console.log('This was the result ' + JSON.stringify(result));
         console.log('Sizes: ' + result['sizeNames']);
-        sizeContainer.innerHTML = result['sizeNames'];
-
+        const sizes = result.sizeNames[0].split(', ');
+        const sizeList = document.createElement('div');
+        sizes.forEach( size => {
+            const sizeQtycontainer = document.createElement('section');
+            sizeQtycontainer.classList.add("centerFlexSpaceBetween");
+            const sizeDiv = document.createElement('div');
+            sizeDiv.style.width = "50%";
+            sizeDiv.classList.add('centerFlex');
+            sizeDiv.appendChild(document.createTextNode(size));
+            const chk = document.createElement('input');
+            chk.type = 'checkbox';
+            chk.name = size;
+            chk.value = size;
+            chk.classList.add('sizeChk');
+            sizeDiv.appendChild(chk);
+            const qtyInSize = document.createElement('input');
+            qtyInSize.type = 'number';
+            qtyInSize.name = "qty"+size;
+            qtyInSize.classList.add("formInput");
+            sizeQtycontainer.appendChild(sizeDiv);
+            sizeQtycontainer.appendChild(qtyInSize);
+            sizeList.append(sizeQtycontainer);
+        });
+        sizeContainer.removeChild(sizeContainer.firstChild);
+        sizeContainer.appendChild(sizeList);
     })
     .catch( err => {
         if(err)
