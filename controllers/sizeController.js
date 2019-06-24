@@ -132,9 +132,8 @@ exports.postAddSize = [
                     return next(err);
                 console.log('Save results are ')
                 console.log(result);
-                res.redirect('./adminViews/prodSizes');
+                res.redirect('/admin/prodSizes');
             });
-        });
-        
+        });        
     }
 ];

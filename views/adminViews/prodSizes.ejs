@@ -9,15 +9,14 @@
         <%if(locals.prodSizes.length > 0) {%>
             <ul class="itemList">
             <%prodSizes.forEach( prodSize => {%>
-                <li class="itemList__item"><%=prodSize%></li>
                 <li class="itemList__item">
                     <div class="listProps">
                         <span class="sectionName centerFlex">Id</span>
                         <span class="sectionValue"><%=prodSize._id%></span>
                     </div>
                     <div class="listProps">
-                        <span class="sectionName centerFlex">Name</span>
-                        <span class="sectionValue"><%=prodSize.name%></span>
+                        <span class="sectionName centerFlex">sizes</span>
+                        <span class="sectionValue"><%=prodSize.sizeNames%></span>
                     </div>
                     <div class="listProps">
                         <span class="sectionName centerFlex">Product Type</span>
