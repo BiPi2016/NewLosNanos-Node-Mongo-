@@ -52,6 +52,10 @@ textarea {
     min-width: 100px;
     text-transform: capitalize;
 }
+.note {
+    font-size: 0.9em;
+    text-transform: lowercase;
+}
 .formInput {
     text-transform: capitalize;
     padding: 10px;

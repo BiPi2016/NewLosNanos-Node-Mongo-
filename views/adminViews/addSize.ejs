@@ -1,0 +1,47 @@
+<%- include('../includes/start') %>
+<link rel="stylesheet" href="/css/admin.css">
+<link rel="stylesheet" href="/css/forms.css">
+</head>
+<body>
+
+    <%- include('./adminMenu') %>
+    <h1 class="pageTitle"><%=title%></h1>
+    <form action="" method="post" class="newSizeForm">
+        <section class="centerFlexSpaceBetween">
+            <section class="fieldContainer">
+                <label for="prodType" class="formLabel">Product type</label>
+                <select name="prodType" id="prodType" class="formInput adminDropDown" required>    
+                    <% prodTypes.forEach( (prodType, index) => {%>
+                        <% let opSelected = (index === 0) ? 'selected' : '' %>
+                        <option value="<%=prodType._id%>"  class="selectOption"<%=opSelected%> >
+                            <%=prodType.name%> in <%=prodType.category.name%> for <%= prodType.category.audience.name%>
+                        </option> 
+                    <%}) %>       
+                </select>
+            </section>
+
+            <section class="fieldContainer">
+                <label for="sizes" class="formLabel">Catetory Name <span class="note">(a coma separated list of sizes)</span></label>
+                <input type="text" name="sizes" id="sizes" class="formInput" required value="<%= (locals.sizes) ? sizes : '' %>">
+            </section>
+        </section>
+    
+        <div class="centerFlex">
+            <button type="submit" class="formBtn formInput">Submit</button>
+            <button type="reset" class="formBtn formInput">Reset</button>
+        </div>
+    </form>
+
+    <% if(locals.errors) {%>
+        <h2 class="title">Following errors occured!!</h2>
+        <ol class="itemList">
+            <%errors.forEach( error => {%>
+                <li class="itemList__item">
+                    <span class="sectionValue"><%=error.msg ? error.msg : error%></span>
+                </li>
+            <%})%>
+        </ol>        
+    <%}%>
+
+</body>
+</html>
