@@ -105,11 +105,14 @@ function getSizes() {
             sizeQtycontainer.classList.add("centerFlexSpaceBetween");
             const sizeDiv = document.createElement('div');
             sizeDiv.style.width = "50%";
-            sizeDiv.classList.add('centerFlex');
-            sizeDiv.appendChild(document.createTextNode(size));
+            sizeDiv.classList.add('centerFlexSpaceBetween');
+            const sizeName = document.createElement('p');
+            sizeName.appendChild(document.createTextNode(size))
+            sizeName.classList.add('sizeName');
+            sizeDiv.appendChild(sizeName);
             const chk = document.createElement('input');
             chk.type = 'checkbox';
-            chk.name = size;
+            chk.name = "chk"+size;
             chk.value = size;
             chk.classList.add('sizeChk');
             sizeDiv.appendChild(chk);

@@ -92,7 +92,13 @@
 }
 
 .sizeSelector {
-    border: 1px solid green;
+    border: 2px solid var(--creamy-purple-dark);
+    border-radius: 5px;
+    padding: 20px;
+}
+.sizeName {
+    text-transform: uppercase;
+    margin: 10px;
 }
 
 
