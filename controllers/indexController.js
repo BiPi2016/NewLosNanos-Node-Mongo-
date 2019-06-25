@@ -1,3 +1,6 @@
+const mongoose = require('mongoose');
+const Product = require('../models/product');
+
 const topCategory = require('../util/menu');
 const footerMenu = require('../util/footer');
 const resources = require('../util/resourceLocator');
@@ -5,19 +8,6 @@ const resources = require('../util/resourceLocator');
 const async = require('async');
 const { body, validationResult } = require('express-validator');
 const { sanitizeBody } = require('express-validator');
-
-const products = [
-    {
-        brand: 'Duke',
-        name: 'Kunvar KurtaKunvar KurtaKunvar KurtaKunvar KurtaKunvar KurtaKunvar Kurta',
-        imageUrl: 'kurta.jpg',
-        type: 'shirts',
-        category: 'Ethnic',
-        gender: 'boys',
-        price: 20,
-        sizes: ['s', 'm', 'l', 'xl']
-    }, {}, {}, {}, {}, {}, {}
-]
 
 exports.getHome = (req, res, next) => {
     console.log('Homepage');
@@ -31,13 +21,23 @@ exports.getHome = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-    console.log('Product page to be rendered');
-    res.render('categories', {
-        title: 'LosNanos Products',
-        topMenu: topCategory,
-        footerMenu: footerMenu,
-        productList: products
-    });
+    // Check if there is a query
+
+    // Paginate before displaying
+
+    // If no query is conducted display products
+
+    Product.find({})
+    .exec( (err, results) => {
+        if(err)
+            return next(err);
+        res.render('categories', {
+            title: 'LosNanos Products',
+            topMenu: topCategory,
+            footerMenu: footerMenu,
+            productList: results
+        });
+    });    
 };
 
 exports.getContactUs = (req, res, next) => {

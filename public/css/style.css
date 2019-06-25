@@ -174,14 +174,28 @@ a {
 .productLink:hover .productImage{
   transform: scale(1.05, 1.05);
 }
-.productInfo,
+/* .productInfo, */
 .productLink {
   position: relative;
   overflow: hidden;
+  padding-bottom: 135%;
+}
+.productInfo {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0%;
+  right: 0;
+  left: 0;
+  display: grid;
+  grid-template-rows: 8.5fr 1.5fr;
+  grid-row-gap: 5px;
+}
+.productInfo-admin{
+  bottom: 10%;
 }
 .productImageContainer {
   overflow: hidden;
-  border-radius: 5px;
 }
 .productImage {
   display: block;

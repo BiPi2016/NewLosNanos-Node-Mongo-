@@ -104,6 +104,11 @@
     text-transform: uppercase;
     margin: 10px;
 }
+.adminOptions {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+}
 
 
 @media only screen and (min-width: 800px) {

@@ -13,7 +13,7 @@
 /* Product Listing */
 .productListing {
     padding: 10px;
-    border: 2px solid yellow;
+    border: 2px solid var(--creamy-purple);
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 5px;
