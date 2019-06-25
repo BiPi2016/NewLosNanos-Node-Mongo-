@@ -63,6 +63,10 @@
 .itemList {
     margin: 10px auto;
     width: 90%;
+    flex-wrap: wrap;
+}
+.itemList__item-50 {
+    width: 40%;
 }
 .itemList__item {
     border-bottom: 1px solid var(--my-blue);

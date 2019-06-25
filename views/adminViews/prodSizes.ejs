@@ -7,9 +7,9 @@
     <h1 class="title"><%=title%></h1>
     <main>
         <%if(locals.prodSizes.length > 0) {%>
-            <ul class="itemList">
+            <ol class="itemList centerFlexSpaceBetween">
             <%prodSizes.forEach( prodSize => {%>
-                <li class="itemList__item">
+                <li class="itemList__item itemList__item-50">
                     <div class="listProps">
                         <span class="sectionName centerFlex">Id</span>
                         <span class="sectionValue"><%=prodSize._id%></span>
@@ -32,7 +32,7 @@
                     </div>               
                 </li>
             <%})%>
-            </ul>
+            </ol>
         <%} else {%>
             <h2 class="title">No sizes found</h2>
         <%}%>

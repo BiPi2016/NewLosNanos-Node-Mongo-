@@ -20,7 +20,7 @@
             <input type="number" name="price" id="price" class="formInput" required>
         </section>
         <section class="fieldContainer centerFlexSpaceBetween" id="prodClassification">
-            <%- include('./adminElements/selectAudience') %>
+            <%- include('./adminElements/selectGender') %>
             <%- include('./adminElements/selectCategory') %>
             <%- include('./adminElements/selectType') %>
         </section>
@@ -34,11 +34,6 @@
             <section id="sizes">
             </section>
         </section>
-
-        <section class="fieldContainer imageSelector" >
-            <label for="imageUrl" class="formLabel">Image name</label>
-            <input type="text" name="imageUrl" id="imageUrl" class="formInput" required>
-        </section>
         
         <div class="centerFlex">
                 <button type="submit" class="formBtn formInput">Submit</button>
@@ -46,18 +41,5 @@
         </div>
         
     </form>
-    
-    <% if(locals.errors) {%>
-        <h2 class="title">Following errors occured!!</h2>
-        <ol class="itemList">
-            <%errors.forEach( error => {%>
-                <li class="itemList__item">
-                    <span class="sectionValue"><%=error.msg ? error.msg : error%></span>
-                </li>
-            <%})%>
-        </ol>        
-    <%}%>
-
-    <script src="/javascripts/addProduct.js"></script>
 </body>
 </html>

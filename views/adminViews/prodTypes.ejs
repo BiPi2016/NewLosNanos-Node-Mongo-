@@ -7,9 +7,9 @@
     <h1 class="title"><%=title%></h1>
     <main>
         <%if(locals.prodTypes.length > 0) {%>
-            <ol class="itemList">
+            <ol class="itemList centerFlexSpaceBetween">
             <%prodTypes.forEach( prodType => {%>
-                <li class="itemList__item">
+                <li class="itemList__item .itemList__item-50">
                     <div class="listProps">
                         <span class="sectionName centerFlex">Id</span>
                         <span class="sectionValue"><%=prodType._id%></span>
@@ -30,7 +30,7 @@
             <%})%>
             </ol>
         <%} else {%>
-            <h2>Could not find any Product Type</h2>
+            <h2 class="title">Could not find any Product Type</h2>
         <%}%>
     </main>
 </body>

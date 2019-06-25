@@ -21,17 +21,39 @@ const productSchema = new Schema(
             required: true,
             min: 1
         },
-        gender: {
+        audienceName: {
+            type: String,
+            required: true,
+            minlength: 1
+        },
+        audience: {
             type: Schema.Types.ObjectId,
             ref: 'genders'
+        },
+        categoryName: {
+            type: String,
+            required: true,
+            minlength: 1
         },
         category: {
             type: Schema.Types.ObjectId,
             ref: 'categories'
         },
-        type: {
+        prodTypeName: {
+            type: String,
+            required: true,
+            minlength: 1
+        },
+        prodType: {
             type: Schema.Types.ObjectId,
             ref: 'types'
+        },
+        sizesNames: [{
+            type: String
+        }],
+        imageUrl: {
+            type: String,
+            required: true
         }
     }
 );

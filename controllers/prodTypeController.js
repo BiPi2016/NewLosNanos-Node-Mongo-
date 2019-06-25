@@ -1,5 +1,8 @@
+const mongoose = require('mongoose');
+
 const ProdType = require('../models/prodType');
 const Category = require('../models/category');
+const Audience = require('../models/gender');
 
 
 const topCategory = require('../util/menu');
@@ -60,16 +63,25 @@ exports.postAddProdType = [
     function(req, res, next) {
         const prodType = new ProdType( {
             name: req.body.prodType.toLowerCase(),
-            category: req.body.category
+            category: mongoose.Types.ObjectId(req.body.category) // req.body.category
         });
+        console.log(prodType);
 
         async.parallel({
+            audiences: function(cb) {
+                Audience.find({}).exec(cb);
+            },
             categories: function(cb) {
-                Category.find({}).exec(cb);
+                Category.find({}).populate('audience').exec(cb);
             },
             prodTypes: function(cb) {
-                ProdType.find({name: prodType.name})
-                .populate('category')
+                ProdType.findOne({name: prodType.name})
+                .populate({
+                    path: 'category',
+                    populate: {
+                        path: 'audience'
+                    }
+                })
                 .where('category').equals(prodType.category)
                 .exec(cb);
             }
@@ -85,12 +97,13 @@ exports.postAddProdType = [
                     title: 'Invalid input',
                     prodType: prodType,
                     categories: results.categories,
+                    audiences: results.audiences,
                     errors: errors.array()
                 });
             }
 
             // Product type already exists
-            if(results.prodTypes.length > 0) {
+            if(results.prodTypes) {
                 return res.render('./adminViews/addProdType', {
                     title: 'Product type already exists',
                     prodType: prodType,
@@ -103,7 +116,7 @@ exports.postAddProdType = [
             prodType.save((err, result) => {
                 if(err)
                     return next(err);
-                res.redirect('/admin/prodTypes');
+                res.redirect('/admin/addProdType');
             });
         })
     }

@@ -29,7 +29,6 @@ console.log('selected category ' + catList.value);
 
 
 const audience = function () {
-    console.log('Target audience selected/changed ');
     return (audienceList.value === 'male' ? boys : girls);
 };
 
@@ -40,7 +39,7 @@ window.addEventListener('load', getSizes);
 
 function getLists(evt) {
     console.log(evt.target);
-    if(evt.target.classList.contains('audienceSelection')) {
+    if(evt.target.classList.contains('genderSelection')) {
         console.log(evt.target.value);
         getCat(audience());
         getType(catList.selectedIndex);
@@ -56,7 +55,6 @@ function getLists(evt) {
 
 // Creates list of all categories that belong to selected audience/gender
 function getCat(gender) {
-    console.log('About to load category for selected audience');
     catList.innerHTML = '';
     gender.categories.forEach( (category, index) => {
         const option = document.createElement('option');
@@ -114,7 +112,7 @@ function getSizes() {
             sizeDiv.appendChild(sizeName);
             const chk = document.createElement('input');
             chk.type = 'checkbox';
-            chk.name = "chkSize[]";  // Attatching the square bracket to the name helps serverside understand that all checkboxes belong to the same group
+            chk.name = "chk"+size;
             chk.value = size;
             chk.classList.add('sizeChk');
             sizeDiv.appendChild(chk);

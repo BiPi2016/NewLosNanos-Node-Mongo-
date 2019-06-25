@@ -8,12 +8,12 @@ const grannys = ['scarfs', 'jerseys', 'gloves'];
 const grannysCatEndPoints = ['/?category=grannys&type=scarf', '/?category=grannys&type=jersey', '/?category=grannys&type=gloves'];
 const boysCloths = ['jeans', 'trousers and chinos', 'shirts', 't-shirts', 'jerseys', 'jackets', 'coats', 'rain-gear', 'ethnic'];
 const boysShoes = ['sneakers', 'dressing-shoes', 'boots', 'sandals', 'hawainas', 'gum-boots and others', 'ethnic'];
-const boysAccessories = ['caps and hats', 'clocks', 'belts', 'socks', 'under-garments', 'mufllers', 'gloves', 'body-warmers'];
+const boysAccessories = ['caps and hats', 'clocks', 'belts', 'socks', 'under-garments', 'mufflers', 'gloves', 'body-warmers'];
 const boysEtnic = ['kurtas and pijamas', 'vests', 'dhoti kurtas', 'sherwanis', 'lohis' ];
-const girlsCloths = ['jeans', 'trousers and chinos', 'shirts', 't-shirts', 'jerseys', 'jackets', 'coats', 'skirts', 'rain-gear', 'ethnic'];
+const girlsCloths = ['jeans', 'trousers and chinos', 'shirts', 't-shirts', 'tops', 'jerseys', 'jackets', 'coats', 'skirts', 'rain-gear', 'ethnic'];
 const girlsEthnic = ['salwar-kurta', 'lehnga-cholis / ghagra-cholis', 'vests', 'jacekts', 'saaris'];
 const girlsShoes = ['sneakers', 'dressing-shoes', 'boots', 'sandals', 'hawainas', 'gum-boots and others', 'ethnic'];
-const girlsAccessories = ['caps and hats', 'clocks', 'belts', 'socks', 'leggings', 'under-garments', 'mufllers', 'gloves', 'body-warmers', 'hair accessories', 'shawls'];
+const girlsAccessories = ['caps and hats', 'clocks', 'belts', 'socks', 'leggings', 'under-garments', 'mufflers', 'gloves', 'body-warmers', 'hair accessories', 'shawls'];
 
 const boysProducts = [boysCloths, boysShoes, boysAccessories, boysEtnic];
 const girlsProducts = [girlsCloths, girlsShoes, girlsAccessories, girlsEthnic];

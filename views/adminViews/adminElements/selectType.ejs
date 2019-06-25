@@ -1,6 +1,6 @@
 <section class="dropDownContainer">
     <label for="type" class="formLabel centerFlex">Type</label>    
-    <select name="type" id="prodType" class="formInput typeSelection adminDropDown" required>
+    <select name="prodType" id="prodType" class="formInput typeSelection adminDropDown" required>
         <% topMenu[0].subCats[0].subCats.forEach( type => {%>
             <option value="<%=type%>" class="selectOption"><%=type%></option> 
         <%})%>
