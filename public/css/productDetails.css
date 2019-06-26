@@ -1,59 +1,159 @@
 .productDetails {
-    border: 1px solid red
+    background-color: var(--pinkish-gray);
 }
 
 .imageContainer {
-    border: 2px solid yellow;
 }
 
-.detailsContainer {
-    border: 1px solid blue;
+.carousell {
+    position: relative;
 }
+.imageMover {
+    color: var(--creamy-purple-dark);
+    font-size: 3em;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+}
+.imageMover-left {
+    left: 0;
+}
+.imageMover-right {
+    right: 0;
+}
+.imageMover:hover {
+    background-color: var(--pearl-white);
+    cursor: pointer;
+}
+
+.thumbnails {
+    height: 70vh;
+    overflow-x: auto;
+    display: flex;
+}
+
+.thumbnailContainer {
+    min-width: 200px;
+    height: 100%;
+    min-width: 100%;
+    overflow: hidden;
+}
+/* Thumbnail Image */
+.thumbnailImage {
+    box-sizing: border-box;
+    display: block;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;   
+    object-fit: cover;
+}
+
+/* Hiding selected image */
+.selectedImageContainer {
+    display: none;
+}
+
+
+.detailsContainer {
+    background-color: var(--pearl-white);
+    color: var(--my-blue);
+}
+
+.mainFacts {
+    overflow: hidden;
+}
+.brand {
+    font-weight: bold;
+}
+.name {
+    font-size: 1.2em;
+}
+.brand, 
+.name,
+.price {
+    letter-spacing: 1px;
+    margin: 5px auto;
+    padding: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sizeNQty {
+    margin: 10px auto;
+    padding: 10px;
+}
+
+
 
 @media only screen and (min-width: 800px) {
     .productDetails {
-        height: 80vh;
         display: flex;
+        justify-content: space-around;
+        border: 2px solid var(--creamy-purple);
+        padding: 10px;
+        margin: 10px 0;
+        background-color: transparent;
     }
 
     .imageContainer {
-        max-width: 50%;
+        min-height: 70vh;
         display: grid;
         grid-template-columns: 1fr 3fr;
         grid-column-gap: 10px;
     }
 
+    .imageMover {
+        display: none;
+    }
+
+    .thumbnails {
+        padding: 5px 10px;
+        height: auto;
+        overflow-y: auto;
+        flex-direction: column;
+    }
+
     .thumbnailContainer {
-        border: 1px solid green;
+        height: 180px;
+        margin-bottom: 5px;
     }
 
     .selectedImageContainer {
-        border: 1px solid red;
-    }
-
-    .thumbnailContainer,
-    .selectedImageContainer {
-        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         overflow: hidden;
     }
-
-
-    .thumbnail,
-    .selectedImage {
-        object-fit: cover;
-        object-position: center center;
-        min-width: 100%;
-        max-width: 100%;
-        min-height: 100%;
-        max-height: 100%;
-    }
-
-    .thumbnail {
-        max-height: 200px;
-    }
     
+    .selectedImage {
+        display: block;
+        object-fit: cover;
+    }
 
+    /* Details */
     .detailsContainer {
-        min-width: 45%;
+        min-width: 50%;
+    }
+    .mainFacts {
+        overflow: hidden;
+    }
+    .brand {
+        font-weight: bold;
+    }
+    .brand, 
+    .name,
+    .price {
+    }
+
+    .sizeNQty {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+    }
+
+    .addToCartForm {
+        all: unset;
     }
 }

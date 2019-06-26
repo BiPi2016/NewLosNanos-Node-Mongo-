@@ -1,0 +1,6 @@
+<label for="selectSize" class="formLabel">Select your size</label>
+<select name="selectSize" id="selectSize" class="formInput">
+    <% sizes.forEach( size => {%>
+        <option class="selectOp" value="<%=size%>"><%=size%></option>
+    <%})%>
+</select>

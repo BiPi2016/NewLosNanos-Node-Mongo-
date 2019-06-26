@@ -203,6 +203,8 @@ exports.postAddProduct = [
             
             Product.findOne({ $and: [{name: req.body.name}, {brand: req.body.brand}, {prodType: selectedType._id}]})
             .exec( (err, result) => {
+                if(err) return next(err);
+
                 // Product already registered
                 if(result) {
                     console.log('Product already registered' + result);

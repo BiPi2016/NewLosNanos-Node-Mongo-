@@ -8,18 +8,45 @@
     <main class="mainContainer productDetails">
         
         <section class="imageContainer">
-            <section class="thumbnails">
-                <section class="thumbnailContainer">
-                    <img src="/images/<%=product.imageUrl%>" alt="<%=product.name%>" class="thumbnail">
+            <div class="carousell">                
+                <span class="imageMover imageMover-left"><i class="fas fa-angle-left"></i></span>
+                <section class="thumbnails">
+                    <%- include('./includes/thumbnailsGenerator', {productImages: product.imageUrls, name: product.name}) %>                    
                 </section>
-            </section>
+                <span class="imageMover imageMover-right"><i class="fas fa-angle-right"></i></span>
+            </div>
+            
             
             <section class="selectedImageContainer">
-                <img src="/images/<%=product.imageUrl%>" alt="<%=product.name%>" class="selectedImage">
+                <img src="/images/<%=product.imageUrls[0]%>" alt="<%=product.name%>" class="selectedImage">
             </section>
 
         </section>
         <section class="detailsContainer">
+            <div class="mainFacts">
+                <p class="brand"><%=product.brand%></p>
+                <p class="name"><%=product.name%></p>
+                <p class="price"><%=product.price%></p>
+            </div>
+
+            <div class="sizeNQty">
+                <section class="fieldContainer">
+                    <%- include('./includes/elements/selectSize', {sizes: product.sizeNames}) %>
+                </section>
+
+                <section class="fieldContainer">
+                    <%- include('./includes/elements/selectQty') %>
+                </section>   
+            </div>
+
+            <form class="fieldContainer addToCartForm" method="POST" action="/addToCart">
+                <input type="hidden" name="prodId" value="<%=product._id%>">
+                <button type="submit" class="formInput formBtn">Add to cart</button>
+            </form>
+
+            <section class="fieldContainer">
+                <a href="#" class="formInput formBtn addToFavBtn"><i class="far fa-heart"></i></a>
+            </section>
 
         </section>
     </main>
