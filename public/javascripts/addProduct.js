@@ -114,7 +114,7 @@ function getSizes() {
             sizeDiv.appendChild(sizeName);
             const chk = document.createElement('input');
             chk.type = 'checkbox';
-            chk.name = "chkSize[]";  // Attatching the square bracket to the name helps serverside understand that all checkboxes belong to the same group
+            chk.name = "chkSize";  // Attatching the square bracket to the name helps serverside understand that all checkboxes belong to the same group
             chk.value = size;
             chk.classList.add('sizeChk');
             sizeDiv.appendChild(chk);

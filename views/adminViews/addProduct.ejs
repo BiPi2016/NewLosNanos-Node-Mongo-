@@ -9,15 +9,15 @@
     <form action="" method="post" class="newProductForm">
         <section class="fieldContainer">
             <label for="brand" class="formLabel">Brand</label>
-            <input type="text" name="brand" id="brand" class="formInput" required>
+            <input type="text" name="brand" id="brand" class="formInput" required value="<%= locals.product ? product.brand : '' %>">
         </section>
         <section class="fieldContainer">
             <label for="name" class="formLabel">Name</label>
-            <input type="text" name="name" id="name" class="formInput" required>
+            <input type="text" name="name" id="name" class="formInput" required value="<%= locals.product ? product.name : '' %>">
         </section>
         <section class="fieldContainer">
             <label for="price" class="formLabel">Price</label>
-            <input type="number" name="price" id="price" class="formInput" required>
+            <input type="number" name="price" id="price" class="formInput" required value="<%= locals.product ? product.price : '' %>">
         </section>
         <section class="fieldContainer centerFlexSpaceBetween" id="prodClassification">
             <%- include('./adminElements/selectAudience') %>
@@ -37,7 +37,7 @@
 
         <section class="fieldContainer imageSelector" >
             <label for="imageUrl" class="formLabel">Image name</label>
-            <input type="text" name="imageUrl" id="imageUrl" class="formInput" required>
+            <input type="text" name="imageUrl" id="imageUrl" class="formInput" required >
         </section>
         
         <div class="centerFlex">

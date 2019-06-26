@@ -48,8 +48,9 @@ const productSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'types'
         },
-        sizesNames: [{
-            type: String
+        sizeNames: [{
+            type: String,
+            required: true
         }],
         imageUrl: {
             type: String,

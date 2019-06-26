@@ -9,6 +9,7 @@ const async = require('async');
 const { body, validationResult } = require('express-validator');
 const { sanitizeBody } = require('express-validator');
 
+// Get Landing Page
 exports.getHome = (req, res, next) => {
     console.log('Homepage');
     res.render('index', { 
@@ -20,6 +21,7 @@ exports.getHome = (req, res, next) => {
      });
 };
 
+// Get Category
 exports.getProducts = (req, res, next) => {
     // Check if there is a query
 
@@ -40,6 +42,35 @@ exports.getProducts = (req, res, next) => {
     });    
 };
 
+
+// Get Product Details
+exports.getProductDetails = (req, res, next) => {
+    const id = mongoose.Types.ObjectId(req.params.id);
+    console.log(id);
+    Product.findOne({_id: id})
+    .exec( (err, desiredProd) => {
+        if(err) next(err);
+
+        // Could not find the product
+        if(!desiredProd) {
+            return res.render('productDetails', {
+                title: 'Errors 404',
+                topMenu: topCategory,
+                footerMenu: footerMenu,
+                errors: [new Error('Could not find the product')]
+            });
+        }
+
+        res.render('productDetails', {
+            title: desiredProd.name,
+            topMenu: topCategory,
+            footerMenu: footerMenu,
+            product: desiredProd
+        });
+    });
+}
+
+// Get Contact Us
 exports.getContactUs = (req, res, next) => {
     res.render('contactus', {
         title: 'Contact Los Nanos',

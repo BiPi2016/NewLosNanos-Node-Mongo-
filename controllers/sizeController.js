@@ -22,7 +22,8 @@ exports.getSizes = (req, res, next) => {
         return(async.waterfall([                
                function(cb) {
                     Audience.findOne({name: req.query.audience})
-                    .exec((err, results)=> {
+                    .exec((err, results) => {
+                        console.log('First search for audience done' + results);
                         if(err) return next(err);
                         cb(null, results);
                     });
@@ -38,13 +39,15 @@ exports.getSizes = (req, res, next) => {
                function(resultCat, cb) {         
                    ProdType.find({ $and: [ {category: resultCat}, {name: req.query.prodType} ] })
                    .exec( (err, resultType) => {
-                       if(err) return next(err)
+                       if(err) return next(err);
+                       console.log('Sizes retrieved ' + resultType);
                        cb(null, resultType);
                    });
                }
             ], function(err, resultType) {
                 if(err)
                     return next(err);
+                console.log('sizes for following product passed ' + resultType);
                 Size.findOne({ prodType: resultType })
                 .populate({
                     path: 'prodType',
@@ -59,6 +62,7 @@ exports.getSizes = (req, res, next) => {
                     }
                 })
                 .exec( (err, results) => {
+                    console.log('Following are the sizes for above product');
                     console.log(results);
                     return res.send(results);
                 });                        

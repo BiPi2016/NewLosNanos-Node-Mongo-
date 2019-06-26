@@ -130,6 +130,8 @@ exports.postAddProduct = [
     
     function (req, res, next) {        
         console.log('inside request handerler');
+        console.log('What user entered for sizes: ');
+        console.log( req.body.chkSize);
 
         async.waterfall([
             function(cb) {
@@ -174,14 +176,14 @@ exports.postAddProduct = [
                 category: selectedType.category._id,
                 prodTypeName: req.body.prodType,
                 prodType: selectedType._id,
-                sizeNames: req.body.chkSize ? req.body.chkSize : [],
+                sizeNames: req.body.chkSize,
                 imageUrl: imageUrlString
             });
 
             const errors = validationResult(req);
 
             console.log('Newely Created Product');
-            console.log(product);
+            console.log(product.sizeNames);
 
             if(!errors.isEmpty()) {
                 console.log('Errors in input');
@@ -199,7 +201,7 @@ exports.postAddProduct = [
                 // Product already registered
                 if(result) {
                     console.log('Product already registered' + result);
-                    return res.render('addProduct', {
+                    return res.render('./adminViews/addProduct', {
                         title: 'Product already exist',
                         product: result,
                         topMenu: topCategory,
