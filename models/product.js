@@ -52,10 +52,10 @@ const productSchema = new Schema(
             type: String,
             required: true
         }],
-        imageUrl: {
+        imageUrls: [{
             type: String,
             required: true
-        }
+        }]
     }
 );
 

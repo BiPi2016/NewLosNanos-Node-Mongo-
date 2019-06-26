@@ -120,13 +120,13 @@ exports.postAddProduct = [
     body('brand', 'Brand must not be empty').isLength({min:1}).trim(),
     body('name', 'Product-name must not be empty').isLength({min:1}).trim(),
     body('price', 'Price must be more than 0').isLength({min:1}).trim(),
-    body('imageUrl').isLength({min:1}).withMessage('You must specify imageUrl').trim(),
+    body('imageUrls').isLength({min:1}).withMessage('You must specify imageUrls').trim(),
 
     // sanitize
     sanitizeBody('brand').escape(),
     sanitizeBody('name').escape(),
     sanitizeBody('price').escape().toFloat(),
-    sanitizeBody('imageUrl').escape(),
+    sanitizeBody('imageUrls').escape(),
     
     function (req, res, next) {        
         console.log('inside request handerler');
@@ -164,7 +164,12 @@ exports.postAddProduct = [
             function(err, selectedType) {
             if(err)
                 return next(err);
-                const imageUrlString = req.body.audience + '/' + req.body.category +'/'+ req.body.prodType +'/'+ req.body.imageUrl;
+
+            // Creatiing array of image urls   
+            const imageUrlArray = req.body.imageUrls.split(',').map( img => {
+                return req.body.audience + '/' + req.body.category +'/'+ req.body.prodType +'/'+ img.trim(); 
+            });
+
             // Create new instance of Product
             const product = new Product({
                 brand: req.body.brand,
@@ -177,7 +182,7 @@ exports.postAddProduct = [
                 prodTypeName: req.body.prodType,
                 prodType: selectedType._id,
                 sizeNames: req.body.chkSize,
-                imageUrl: imageUrlString
+                imageUrls: imageUrlArray
             });
 
             const errors = validationResult(req);
