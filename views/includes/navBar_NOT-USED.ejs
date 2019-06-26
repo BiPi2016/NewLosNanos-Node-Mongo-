@@ -1,0 +1,42 @@
+<nav class="mainNav">        
+        <%if(topMenu) {%>
+            <ul class="topNavList">
+                <%topMenu.forEach( (tm, indexTop) => {%>
+                    <li class="topNavList__item">
+                        <p class="topMenuOptionContainer">
+                            <a href="<%=tm.endPoint%>" class="topNav__link"><%=tm.name%></a>
+                            <label for="checkTopCat<%=indexTop%>" class="topCatLabel"><span class="plusContainer">+</span> </label>
+                        </p>
+                        <input type="checkbox" name="" id="checkTopCat<%=indexTop%>" class="checkTopCat">
+                        <ul class="topNav__subCatList" >
+                            <% tm.subCats.forEach( (s, indexSub) => {%>
+                                <li class="topNav__subCatList__item">
+                                    <p class="subMenuOptionContainer">
+                                        <a href="<%=s.endPoint%>" class="subCat__link"><%= s.name %></a>
+                                        <% if(s.subCats) {%>
+                                            <label for="<%=indexTop%><%=indexSub%>" class="subMenuLabel"><span class="plusContainer">+</span></label>
+                                        <%}%>
+                                        </p>   
+                                    <div class="divider"></div>                                
+                                    <% if(s.subCats) {%>
+                                        <input type="checkbox" class="checkSubCat" id="<%=indexTop%><%=indexSub%>"> 
+                                        <!-- The value of id in the checkbox and for in the label need to use two indexs <%=indexTop%> and <%indexSub%>,
+                                        one from the outer loop and the other from the inner loop.
+                                        It is similar to accessing elements of a multidimensional array. -->
+                                        <ul class="innermost__list">
+                                            <% s.subCats.sort() %>
+                                            <% s.subCats.forEach( menu => {%>
+                                                <li class="innermost__list__item">
+                                                    <a href="/products/?audience=<%=tm.name%>&category=<%=s.name%>&type=<%=menu%>" class="innermost__link"><%=menu%></a>
+                                                </li>
+                                            <%})%>
+                                        </ul>
+                                    <%}%>
+                                </li>
+                            <%})%>
+                        </ul> 
+                    </li>
+                <%})%>
+            </ul>
+        <%}%>
+    </nav>

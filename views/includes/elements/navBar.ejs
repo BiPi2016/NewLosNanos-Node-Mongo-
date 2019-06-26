@@ -13,7 +13,7 @@
                         <%}%>
                         
                         <input type="checkbox" name="" id="checkTopCat<%=indexTop%>" class="checkTopCat">
-                        <input type="checkbox" name="" id="checkSideNavTopCat<%=indexTop%>" class="checkSideNavTopCat">
+                        <input type="checkbox" name="" id="<%= sideNav ? 'checkSideNavTopCat' + indexTop : '' %>" class="checkSideNavTopCat">
                         <ul class="<%= sideNav ? 'sideNav__subCatList' : 'topNav__subCatList'%>" >
                             <% tm.subCats.forEach( (s, indexSub) => {%>
                                 <li class="<%= sideNav ? 'sideNav__subCatList__item' : 'topNav__subCatList__item'%>">
@@ -31,7 +31,7 @@
                                     <%}%>                                       
                                     <div class="divider"></div>                                
                                     <% if(s.subCats) {%>
-                                        <input type="checkbox" id="sideNavChk<%=indexTop%><%=indexSub%>" class="chkSideNavSubCat">
+                                        <input type="checkbox" id="<%= sideNav ? 'sideNavChk' +indexTop + indexSub : '' %>" class="chkSideNavSubCat">
                                         <input type="checkbox" class="checkSubCat" id="<%=indexTop%><%=indexSub%>"> 
                                         <!-- The value of id in the checkbox and for in the label need to use two indexs <%=indexTop%> and <%indexSub%>,
                                         one from the outer loop and the other from the inner loop.

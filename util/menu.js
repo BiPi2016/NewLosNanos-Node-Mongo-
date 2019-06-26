@@ -1,11 +1,11 @@
-const topCategoryNames =  ['boys', 'girls', "granny's corner"];
-const topCategoryEndPoints = ['/?gender=boys', '/?gender=girls', '/?category=grannys'];
+const topCategoryNames =  ['male', 'female', "granny's corner"];
+const topCategoryEndPoints = ['/products/?audience=boys', '/products/?audience=girls', '/products/?category=grannys'];
 const boys = ['clothes', 'shoes', 'accessories', 'ethnic'];
-const boysCatEndPoints = ['/?gender=boys&catogory=cloths', '/?gender=boys&catogory=shoes', '/?gender=boys&catogory=accessories', '/?gender=boys&catogory=ethnic'];
+const boysCatEndPoints = ['/products/?audience=boys&catogory=cloths', '/products/?audience=boys&catogory=shoes', '/products/?audience=boys&catogory=accessories', '/products/?audience=boys&catogory=ethnic'];
 const girls = ['clothes', 'shoes', 'accessories', 'ethnic'];
-const girlsCatEndPoints = ['/?gender=girls&catogory=cloths', '/?gender=girls&catogory=shoes', '/?gender=girls&catogory=accessories', '/?gender=girls&catogory=ethnic'];
+const girlsCatEndPoints = ['/products/?audience=girls&catogory=cloths', '/products/?audience=girls&catogory=shoes', '/products/?audience=girls&catogory=accessories', '/products/?audience=girls&catogory=ethnic'];
 const grannys = ['scarfs', 'jerseys', 'gloves'];
-const grannysCatEndPoints = ['/?category=grannys&type=scarf', '/?category=grannys&type=jersey', '/?category=grannys&type=gloves'];
+const grannysCatEndPoints = ['/products/?category=grannys&type=scarf', '/products/?category=grannys&type=jersey', '/products/?category=grannys&type=gloves'];
 const boysCloths = ['jeans', 'trousers and chinos', 'shirts', 't-shirts', 'jerseys', 'jackets', 'coats', 'rain-gear', 'ethnic'];
 const boysShoes = ['sneakers', 'dressing-shoes', 'boots', 'sandals', 'hawainas', 'gum-boots and others', 'ethnic'];
 const boysAccessories = ['caps and hats', 'clocks', 'belts', 'socks', 'under-garments', 'mufflers', 'gloves', 'body-warmers'];
