@@ -1,11 +1,27 @@
 <%- include('./includes/start.ejs') %>
-<link rel="stylesheet" href="/css/categories.css">
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/productDetails.css">
 </head>
 <body>
     <%- include('./includes/topNav') %>
+    <%=product%>
+    <main class="mainContainer productDetails">
+        
+        <section class="imageContainer">
+            <section class="thumbnails">
+                <section class="thumbnailContainer">
+                    <img src="/images/<%=product.imageUrl%>" alt="<%=product.name%>" class="thumbnail">
+                </section>
+            </section>
+            
+            <section class="selectedImageContainer">
+                <img src="/images/<%=product.imageUrl%>" alt="<%=product.name%>" class="selectedImage">
+            </section>
 
-    <main class="mainContainer">
-        <%=product%>
+        </section>
+        <section class="detailsContainer">
+
+        </section>
     </main>
 
     <%- include('./includes/footer') %>
