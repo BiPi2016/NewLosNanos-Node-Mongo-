@@ -1,10 +1,14 @@
 const createError = require('http-errors');
 const express = require('express');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const helmet  = require('helmet');
 const compression = require('compression');
+
+// Databse
 require('./util/mongoDB')();
 
 const indexRouter = require('./routes/indexRoutes');
@@ -30,6 +34,29 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//Session management
+const mongoUri = require('./util/constants').createConnectionString();
+
+app.use(session({
+  store: new MongoStore({
+    url: mongoUri,
+    collection: 'sessions',
+    ttl: 14 * 24 * 60 * 60 // = 14 days. Default
+  }),
+  secret: 'Some secret',
+  httpOnly: true,
+  resave: false,
+  saveUninitialized: true,
+  rolling: true,
+  cookie: {
+    secure: true,
+    maxAge: 60000
+  }
+}));
+
+
+//csrf
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

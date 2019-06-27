@@ -26,7 +26,7 @@ const options = {
   rejectUnauthorized: false
 };
 
-var server = https.createServer(options,app);
+var server = https.createServer(options, app);
 
 /**
  * Listen on provided port, on all network interfaces.

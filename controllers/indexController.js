@@ -12,6 +12,7 @@ const { sanitizeBody } = require('express-validator');
 // Get Landing Page
 exports.getHome = (req, res, next) => {
     console.log('Homepage');
+    console.log('session is ' + req.session.id);
     res.render('index', { 
         title: 'Express', 
         topMenu: topCategory,
