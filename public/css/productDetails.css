@@ -72,6 +72,7 @@
 .brand, 
 .name,
 .price {
+    text-transform: capitalize;
     letter-spacing: 1px;
     margin: 5px auto;
     padding: 10px;
@@ -98,7 +99,7 @@
     }
 
     .imageContainer {
-        min-height: 70vh;
+        min-height: 80vh;
         display: grid;
         grid-template-columns: 1fr 3fr;
         grid-column-gap: 10px;
@@ -116,7 +117,7 @@
     }
 
     .thumbnailContainer {
-        height: 180px;
+        height: 130px;
         margin-bottom: 5px;
     }
 
