@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Product = require('../models/product');
+const User = require('../models/user');
 
 const topCategory = require('../util/menu');
 const footerMenu = require('../util/footer');
@@ -121,6 +122,35 @@ exports.postSignUp = [
                 missMatchErrors: missMatchErrors
             });
         }
+
+        // All clear, Check if the user previously exist
+        User.findOne({userName: email})
+        .exec( (err, result) => {
+            if(err) return next(err);
+            if(result) {
+                // user previously exits
+                return res.render('signup', {
+                    title: 'User previously exist',
+                    topMenu: topCategory,
+                    footerMenu: footerMenu,
+                    userEmail: email,
+                    confirmEmail: confEmail,
+                    password: pass,
+                    repeatPass: repPass,
+                    alreadExists: true
+                });
+            }
+            
+            const user = new User( {
+                userName: email,
+                password: pass
+            });
+
+            user.save( (err, savedUser) => {
+                if(err) return next(err);
+                res.redirect('/');
+            });
+        });
 
 
 

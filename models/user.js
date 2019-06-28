@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const Schema = require('Schema');
+const Schema = mongoose.Schema;
 
-const bcrypt = require('bycrpt');
+const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
     userName: {
@@ -14,6 +14,13 @@ const userSchema = new Schema({
         minLength: [8, 'The password must be at least characters long']
     }
 });
+
+userSchema.pre('save', function(next) {
+    const saltrounds = 12;
+    const salt = bcrypt.genSaltSync(saltrounds);
+    this.password = bcrypt.hashSync(this.password, salt);
+    next();
+})
 
 // Hashing Passwords
 userSchema.methods.encryptPass = function(enteredPass) {
