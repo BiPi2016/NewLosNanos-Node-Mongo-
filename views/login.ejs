@@ -5,11 +5,16 @@
     <%- include('./includes/topNav') %>
     <h1 class="pageTitle"><%= adminUser === true ? 'admin' : 'user'%> Login Page</h1>
 
-    <h5 class="pageTitle">Or  <a href="/signup">register</a> with us</h6>
+    <% if(locals.userNotFound) {%>
+        <h4 class="pageTitle">Dont have an account? <a href="/signup">register</a> with us</h4>
+    <%} else {%>
+        <h5 class="pageTitle">or <a href="/signup">Sign Up</a></h4>
+    <%}%>
+
     <form action="" method="post" class="userLoginForm">
         <section class="fieldContainer">
-            <label for="username" class="formLabel">User name</label>
-            <input type="text" name="username" id="username" class="formInput">
+            <label for="userName" class="formLabel">User name</label>
+            <input type="text" name="userName" id="userName" class="formInput">
         </section>
         <section class="fieldContainer">
             <label for="password" class="formLabel">Password</label>

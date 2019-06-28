@@ -36,10 +36,33 @@ exports.getLogIn = (req, res, next) => {
 };
 
 // Post login
-exports.postLogIn = (req, res, next) => {
-    console.log('Posting the user-log-in request');
-    res.send('Post log in page');
-};
+exports.postLogIn = [
+    // Validate the email
+    body('userName', "Username must be a valid email").isEmail().trim(),
+
+    // Sanitize
+    sanitizeBody('*').escape(),
+
+    // Handle the request
+    (req, res, next) => {
+    User.findOne({userName: req.body.userName})
+    .exec( (err, result) => {
+        if(err) return next(err);
+
+        if(!result) {
+            return res.render('login', {
+                title: 'User not found',
+                topMenu: topCategory,
+                footerMenu: footerMenu,
+                adminUser: false,
+                userNotFound: true
+            });
+        }
+
+        console.log('Posting the user-log-in request');
+        res.send(result);
+    });    
+}];
 
 // Get Sign up
 exports.getSignUp = (req, res, next) => {
@@ -93,7 +116,7 @@ exports.postSignUp = [
             });
         }
 
-        const missMatchErrors = [];
+        const missMatchErrors = [];  // Not actually used
         const passMatch = function() {
             console.log(pass, repPass);
             if(pass !== repPass) missMatchErrors.push( new Error( { passNotMatched: true}));
@@ -105,7 +128,6 @@ exports.postSignUp = [
             if(email !== confEmail) missMatchErrors.push( new Error( { emailNotMatched: true}));
             return(email === confEmail); 
         }
-
 
         // Emails and password unmatch
         if(!passMatch() || !emailsMatch()) {
@@ -141,6 +163,7 @@ exports.postSignUp = [
                 });
             }
             
+            // New User Instance
             const user = new User( {
                 userName: email,
                 password: pass
@@ -151,12 +174,6 @@ exports.postSignUp = [
                 res.redirect('/');
             });
         });
-
-
-
-
-
-
     }
 ];
 
