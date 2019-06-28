@@ -1,0 +1,20 @@
+.invalidField {
+    background-color: rgb(211, 188, 87);
+    animation-name: redFlash;
+    animation-duration: 1s;
+}
+@keyframes redFlash {
+    0% { background-color: rgb(211, 188, 87)}
+    100% {background-color: white}
+}
+
+.invalidMsg {
+    color: red;    
+}
+.invalidMsgHidden {
+    display: none;
+}
+
+.misMatchEmail {
+    display: none;
+}

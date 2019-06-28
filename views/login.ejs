@@ -4,6 +4,8 @@
 <body>
     <%- include('./includes/topNav') %>
     <h1 class="pageTitle"><%= adminUser === true ? 'admin' : 'user'%> Login Page</h1>
+
+    <h5 class="pageTitle">Or  <a href="/signup">register</a> with us</h6>
     <form action="" method="post" class="userLoginForm">
         <section class="fieldContainer">
             <label for="username" class="formLabel">User name</label>

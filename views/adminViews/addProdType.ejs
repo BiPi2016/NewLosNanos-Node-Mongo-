@@ -31,16 +31,20 @@
             <button type="reset" class="formBtn formInput">Reset</button>
         </div>
     </form>
-    <% if(locals.errors) {%>
-        <h2 class="title">Following errors occured!!</h2>
-        <ol class="itemList">
-            <%errors.forEach( error => {%>
-                <li class="itemList__item">
-                    <span class="sectionValue"><%=error.msg ? error.msg : error%></span>
-                </li>
-            <%})%>
-        </ol>        
-    <%}%>
+
+    <section class="fieldContainer">
+        <% if(locals.errors) {%>
+            <h2 class="title">Following errors occured!!</h2>
+            <ol class="itemList">
+                <%errors.forEach( error => {%>
+                    <li class="itemList__item">
+                        <span class="sectionValue"><%=error.msg ? error.msg : error%></span>
+                    </li>
+                <%})%>
+            </ol>        
+        <%}%>
+    </section>
+    
 
 </body>
 </html>

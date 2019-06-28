@@ -1,30 +1,65 @@
 <%- include('./includes/start') %>
 <link rel="stylesheet" href="/css/login.css">
+<link rel="stylesheet" href="/css/register.css">
 </head>
 <body>
     <%- include('./includes/topNav') %>
     <h1 class="pageTitle">Sign up</h1>
     <form action="" method="post" class="userLoginForm">
         <section class="fieldContainer">
-            <label for="username" class="formLabel">User name</label>
-            <input type="text" name="username" id="username" class="formInput">
+            <label for="userEmail" class="formLabel">E-mail</label>
+            <input type="email" name="userEmail" id="userEmail" class="formInput uEmail" value="<%= locals.userEmail ? userEmail : '' %>" >
+            <p class="invalidMsg invalidMsgHidden">Must enter a valid email</p>
+            <p class="invalidMsg misMatchEmail">Emails do not match</p>
+            <% if(locals.doesEmailsMatch && doesEmailsMatch !== true) {%>
+                <p class="invalidMsg">Emails do not match</p>
+            <%}%>
+            
         </section>
         <section class="fieldContainer">
-            <label for="password" class="formLabel">Password</label>
-            <input type="password" name="password" id="password" class="formInput">
+            <label for="confirmEmail" class="formLabel">Confirm email</label>
+            <input type="email" name="confirmEmail" id="confirmEmail" class="formInput uEmail" value="<%= locals.confirmEmail ? confirmEmail : '' %>" >
+            <p class="invalidMsg invalidMsgHidden">Must enter a valid email</p>     
+            <p class=" invalidMsg misMatchEmail">Emails do not match</p>       
+            <% if(locals.doesEmailsMatch && doesEmailsMatch !== true) {%>
+                <p class="invalidMsg">Emails do not match</p>
+            <%}%>
         </section>
+
+        <section class="fieldContainer">
+            <label for="password" class="formLabel">Password</label>
+            <input type="password" name="password" id="password" class="formInput" value="<%= locals.password ? password : '' %>" >
+            <p class="invalidMsg invalidMsgHidden">Passwords do not match</p>
+        </section>
+        <section class="fieldContainer">
+            <label for="repeatPass" class="formLabel">Repeat Password</label>
+            <input type="password" name="repeatPass" id="repeatPass" class="formInput" value="<%= locals.repeatPass ? repeatPass : '' %>" >
+            <p class="invalidMsg invalidMsgHidden">Passwords do not match</p>
+        </section>
+
         <button class="formBtn formInput">Submit</button>
 
-        <% if(!adminUser) {%>
-            <section class="otherLoginOps">
-                <p class="loginOpsText">Login with following</p>
-                    
-                <section class="otherLoginOpsContainer centerFlex">
-                    Google
-                </section>
+        <section class="otherLoginOps">
+            <p class="loginOpsText">Login with following</p>                    
+            <section class="otherLoginOpsContainer centerFlex">
+                Google
             </section>
-        <%}%>
+        </section>
+
     </form>
+
+    <% if(locals.errors) {%>
+        <h2 class="title">Following errors occured!!</h2>
+        <ol class="itemList">
+            <%errors.forEach( error => {%>
+                <li class="itemList__item">
+                    <span class="sectionValue"><%=error.msg ? error.msg : error%></span>
+                </li>
+            <%})%>
+        </ol>        
+    <%}%>
+
     <%- include('./includes/footer') %>
+    <script src="/javascripts/register.js"></script>
 </body>
 </html>
