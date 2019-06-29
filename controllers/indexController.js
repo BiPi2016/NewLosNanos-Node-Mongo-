@@ -117,20 +117,15 @@ exports.postSignUp = [
         }
 
         const missMatchErrors = [];  // Not actually used
-        const passMatch = function() {
-            console.log(pass, repPass);
-            if(pass !== repPass) missMatchErrors.push( new Error( { passNotMatched: true}));
-            return (pass === repPass);
-        }
+        const passMatch = pass === repPass;
+        console.log('Password match ' + passMatch);
 
-        const emailsMatch = function() {
-            console.log(email, confEmail);
-            if(email !== confEmail) missMatchErrors.push( new Error( { emailNotMatched: true}));
-            return(email === confEmail); 
-        }
+        const emailsMatch = email === confEmail;
+        console.log('Emails match ' + emailsMatch);
 
         // Emails and password unmatch
-        if(!passMatch() || !emailsMatch()) {
+        if(!passMatch || !emailsMatch) {
+            console.log('Emails or passwords do not match');
             return res.render('signup', {
                 title: 'Emails/Passwords do not match',
                 topMenu: topCategory,
@@ -139,8 +134,8 @@ exports.postSignUp = [
                 confirmEmail: confEmail,
                 password: pass,
                 repeatPass: repPass,
-                doesEmailsMatch: emailsMatch,
-                doesPassMatch: passMatch,
+                doesEmailsMatch: emailsMatch ? 'matched' : 'notMatched',
+                doesPassMatch: passMatch  ? 'matched' : 'notMatched',
                 missMatchErrors: missMatchErrors
             });
         }
@@ -159,7 +154,7 @@ exports.postSignUp = [
                     confirmEmail: confEmail,
                     password: pass,
                     repeatPass: repPass,
-                    alreadExists: true
+                    alreadyExists: true
                 });
             }
             
@@ -171,7 +166,13 @@ exports.postSignUp = [
 
             user.save( (err, savedUser) => {
                 if(err) return next(err);
-                res.redirect('/');
+                res.render('login', {
+                    title: 'New account created', 
+                    topMenu: topCategory,
+                    footerMenu: footerMenu,
+                    adminUser: false,
+                    newUserCreated: true
+                });
             });
         });
     }

@@ -5,7 +5,7 @@
 <body>
     <%- include('./includes/topNav') %>
     <h1 class="pageTitle">Sign up</h1>
-    <% if(locals.alreadExists) {%>
+    <% if(locals.alreadyExists) {%>
         <h2 class="pageTitle warning">This email is already registered with us.</h2>
     <%}%>
     <form action="" method="post" class="userLoginForm">
@@ -14,7 +14,7 @@
             <input type="email" name="userEmail" id="userEmail" class="formInput uEmail" value="<%= locals.userEmail ? userEmail : '' %>" >
             <p class="invalidMsg invalidMsgHidden">Must enter a valid email</p>
             <p class="invalidMsg misMatchEmail">Emails do not match</p>
-            <% if(locals.doesEmailsMatch && doesEmailsMatch !== true) {%>
+            <% if(locals.doesEmailsMatch && doesEmailsMatch === 'notMatched' ) {%>
                 <p class="invalidMsg">Emails do not match</p>
             <%}%>
             
@@ -23,8 +23,8 @@
             <label for="confirmEmail" class="formLabel">Confirm email</label>
             <input type="email" name="confirmEmail" id="confirmEmail" class="formInput uEmail" value="<%= locals.confirmEmail ? confirmEmail : '' %>" >
             <p class="invalidMsg invalidMsgHidden">Must enter a valid email</p>     
-            <p class=" invalidMsg misMatchEmail">Emails do not match</p>       
-            <% if(locals.doesEmailsMatch && doesEmailsMatch !== true) {%>
+            <p class=" invalidMsg misMatchEmail">Emails do not match</p>
+            <% if(locals.doesEmailsMatch && doesEmailsMatch === 'notMatched' ) {%>
                 <p class="invalidMsg">Emails do not match</p>
             <%}%>
         </section>
@@ -33,11 +33,17 @@
             <label for="password" class="formLabel">Password</label>
             <input type="password" name="password" id="password" class="formInput" value="<%= locals.password ? password : '' %>" >
             <p class="invalidMsg invalidMsgHidden">Passwords do not match</p>
+            <% if(locals.doesPassMatch && doesPassMatch === 'notMatched' ) {%>
+                <p class="invalidMsg">Passwords do not match</p>
+            <%}%>
         </section>
         <section class="fieldContainer">
             <label for="repeatPass" class="formLabel">Repeat Password</label>
             <input type="password" name="repeatPass" id="repeatPass" class="formInput" value="<%= locals.repeatPass ? repeatPass : '' %>" >
             <p class="invalidMsg invalidMsgHidden">Passwords do not match</p>
+            <% if(locals.doesPassMatch && doesPassMatch === 'notMatched' ) {%>
+                <p class="invalidMsg">Passwords do not match</p>
+            <%}%>
         </section>
 
         <button class="formBtn formInput">Submit</button>
