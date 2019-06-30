@@ -374,6 +374,7 @@ nav ul {
     .userAuthentication {
         display: flex;
         width: 50%;
+        text-transform: capitalize;
     }
 
     #mobileMenuToggleLabel {

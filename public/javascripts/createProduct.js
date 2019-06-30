@@ -11,7 +11,7 @@ const boys = {
 const girls = {
     categories: ['clothes', 'shoes', 'accessories', 'ethnic'],
     types: [
-        ['jeans', 'trousers and chinos', 'shirts', 't-shirts', 'jerseys', 'jackets', 'coats', 'tops', 'skirts', 'rain-gear'],
+        ['jeans', 'trousers and chinos', 'shirts', 't-shirts', 'jerseys', 'jackets', 'coats', 'tops', 'skirts', 'rain-gear', 'dresses'],
         ['sneakers', 'dressing-shoes', 'boots', 'sandals', 'hawainas', 'gum-boots and others'],
         ['caps and hats', 'clocks', 'belts', 'socks', 'leggings', 'under-garments', 'mufflers', 'gloves', 'body-warmers', 'hair accessories', 'shawls'],
         ['salwar-kurta', 'lehnga-cholis / ghagra-cholis', 'vests', 'jacekts', 'saaris'],

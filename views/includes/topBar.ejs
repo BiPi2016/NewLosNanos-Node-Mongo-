@@ -13,8 +13,13 @@
         </div>
 
         <div class="userAuthentication topBarComponent" >
-            <a href="/users"><p class="topBarImage userLogo"><i class="far fa-user"></i></p></a>
-            <a href="/login" class="authentication-msg">Log in</a> 
+            <a href="/users/profile"><p class="topBarImage userLogo"><i class="far fa-user"></i></p></a>
+            <% if(locals.loggedIn) {%>
+                <a href="/users/logout" class="authentication-msg">Log out</a>
+            <%} else {%>                
+                <a href="/users/signup" class="authentication-msg">Sign up</a>
+                <a href="/users/login" class="authentication-msg">Sign in</a> 
+            <%}%>
         </div>
 
         <div class="cartContainer topBarComponent">

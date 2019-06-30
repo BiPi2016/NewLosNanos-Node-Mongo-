@@ -5,9 +5,17 @@
 <body>
     <%- include('./includes/topNav') %>
     <h1 class="pageTitle">Sign up</h1>
+
+    <!-- Using my own solution in the controller -->
     <% if(locals.alreadyExists) {%>
-        <h2 class="pageTitle warning">This email is already registered with us.</h2>
+        <h2 class="pageTitle warning">This email is already in use.</h2>
     <%}%>
+
+    <!-- Using Flash and passport in the controller-->
+    <% if(locals.errorMsg) {%>
+        <h2 class="pageTitle warning"><%=errorMsg%></h2>
+    <%}%>
+
     <form action="" method="post" class="userLoginForm">
         <section class="fieldContainer">
             <label for="userEmail" class="formLabel">E-mail</label>

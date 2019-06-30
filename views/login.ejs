@@ -8,10 +8,10 @@
     <%if(locals.newUserCreated) {%>
         <h5 class="pageTitle">Registeration done, Log in to personlize you experience</h4>
     <%} else {%>
-        <h5 class="pageTitle">or <a href="/signup">Sign Up</a></h4>
+        <h5 class="pageTitle">or <a href="/users/signup">Sign Up</a></h4>
     <%}%>
 
-    <form action="" method="post" class="userLoginForm">
+    <form action="/users/login" method="post" class="userLoginForm">
         <section class="fieldContainer">
             <label for="userName" class="formLabel">User name</label>
             <input type="text" name="userName" id="userName" class="formInput">
@@ -22,10 +22,15 @@
         </section>
 
         <section class="fieldContainer">
-            <%if(locals.userNotFound) {%>
+            <%if(locals.notAuthenticated) {%>
                 <h5 class="pageTitle errorMsg">Email/Password or both not correct!!</h4>
             <%}%>
         </section>
+
+       <!-- Using Flash and passport in the controller-->
+        <% if(locals.errorMsg) {%>
+            <h4 class="pageTitle warning"><%=errorMsg%></h4>
+        <%}%>
 
         <button class="formBtn formInput">Submit</button>
 

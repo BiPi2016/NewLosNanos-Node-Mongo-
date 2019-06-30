@@ -1,15 +1,21 @@
 const createError = require('http-errors');
 const express = require('express');
 const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
+/* const MongoStore = require('connect-mongo')(session); */
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const helmet  = require('helmet');
 const compression = require('compression');
+const passport = require('passport');
+const flash = require('connect-flash');
+const validator = require('express-validator');
 
-// Databse
+// Database
 require('./util/mongoDB')();
+
+// Passport
+require('./config/passport');
 
 const indexRouter = require('./routes/indexRoutes');
 const usersRouter = require('./routes/usersRoutes');
@@ -35,32 +41,45 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Session management
-const mongoUri = require('./util/constants').createConnectionString();
 
+
+ //Session management 
+ /*
+const mongoUri = require('./util/constants').createConnectionString(); */
+const sessionStore = require('./util/sessionStore');
 app.use(session({
-  store: new MongoStore({
+  /* store: new MongoStore({
     url: mongoUri,
     collection: 'sessions',
     ttl: 14 * 24 * 60 * 60 // = 14 days. Default
-  }),
+  }), */
+  store: sessionStore,
   secret: 'Some secret',
   httpOnly: true,
   resave: false,
-  saveUninitialized: true,
-  rolling: true,
+  saveUninitialized: false/* ,
+  rolling: true */,
   cookie: {
     secure: true,
-    maxAge: 60000
+    maxAge: 100000
   }
 }));
 
+// PassportJS 
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
-//csrf
+// Check if user is logged in
+app.use(function(req, res, next) {
+  res.locals.loggedIn = req.isAuthenticated();
+  next();
+});
 
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
+app.use('/', indexRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

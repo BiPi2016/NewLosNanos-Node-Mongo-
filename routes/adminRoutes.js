@@ -6,6 +6,10 @@ const prodTypeController =  require('../controllers/prodTypeController');
 const sizeController = require('../controllers/sizeController');
 const genderController = require('../controllers/genderController');
 
+const csurf = require('csurf');
+const csurfProtection = csurf();
+
+//router.use(csurfProtection);
 
 
 // Get Admin login
